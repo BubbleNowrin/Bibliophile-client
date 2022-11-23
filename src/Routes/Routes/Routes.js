@@ -5,12 +5,14 @@ import AboutUs from "../../Components/Pages/AboutUs/AboutUs";
 import Blogs from "../../Components/Pages/Blogs/Blogs";
 import Dashboard from "../../Components/Pages/Dashboard/Dashboard";
 import Home from "../../Components/Pages/Home/Home";
+import ErrorPage from "../../Components/Shared/ErrorPage/ErrorPage";
 import Main from "../../Layouts/Main";
 
 export const routes = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
