@@ -17,6 +17,10 @@ const Signup = () => {
                 </div>
                 <div class="mt-8">
                     <form action="#" autoComplete="off">
+                        <div>
+                            <input name='name' type="text" id="" class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent mb-2" placeholder="Your name" />
+                            <input name='photoURL' type="text" id="" class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent mb-2" placeholder="Your photoURL" />
+                        </div>
                         <div class="flex flex-col mb-2">
                             <div class="flex relative ">
                                 <span class="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
@@ -25,7 +29,8 @@ const Signup = () => {
                                         </path>
                                     </svg>
                                 </span>
-                                <input type="text" id="sign-in-email" class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent" placeholder="Your email" />
+                                <input name='email' type="email" id="sign-in-email" class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent" placeholder="Your email" />
+
                             </div>
                         </div>
                         <div class="flex flex-col mb-6">
@@ -36,7 +41,7 @@ const Signup = () => {
                                         </path>
                                     </svg>
                                 </span>
-                                <input type="password" id="sign-in-email" class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent" placeholder="Your password" />
+                                <input name='password' type="password" id="sign-in-email" class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent" placeholder="Your password" />
                             </div>
                         </div>
 
