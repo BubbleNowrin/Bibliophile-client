@@ -4,7 +4,7 @@ import image from "../../../Assets/images/Reading book-cuate.png";
 
 const Footer = () => {
     return (
-        <footer aria-label="Site Footer" class="bg-white lg:grid lg:grid-cols-5">
+        <footer aria-label="Site Footer" class="bg-white lg:grid lg:grid-cols-5 mt-10">
             <div class="relative block h-32 lg:col-span-2 lg:h-full">
                 <img
                     src={image}
