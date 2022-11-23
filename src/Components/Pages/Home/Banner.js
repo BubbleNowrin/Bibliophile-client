@@ -10,7 +10,7 @@ const Banner = () => {
                 <section className="max-w-screen-2xl px-4 md:px-8 mx-auto">
                     <div className="flex flex-wrap justify-between mb-8 md:mb-16">
                         <div className="w-full lg:w-1/3 flex flex-col justify-center lg:pt-48 lg:pb-24 mb-6 sm:mb-12 lg:mb-0">
-                            <h1 className="text-black-800 text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-8">Find Your<br />Next Book</h1>
+                            <h1 className="text-black-800 text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-8">Find Your<br />Next Book ..</h1>
 
                             <p className="max-w-md text-gray-500 xl:text-lg leading-relaxed">The most appropriate book-site to sell and buy books. From Science-fiction to Literature, we offer the best collections of second-hand books at cheaper price.</p>
                         </div>
