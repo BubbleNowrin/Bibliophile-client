@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from '../../BookingModal/BookingModal';
 import SingleCategory from './SingleCategory';
 
 const Category = () => {
 
+    const [bookItem, setBookItem] = useState(null);
+
+    console.log(bookItem);
     const categoryItems = useLoaderData();
 
     return (
@@ -13,9 +17,17 @@ const Category = () => {
                 categoryItems.map(categoryItem => <SingleCategory
                     key={categoryItem._id}
                     categoryItem={categoryItem}
+                    setBookItem={setBookItem}
                 ></SingleCategory>
 
                 )
+            }
+            {
+                bookItem &&
+                <BookingModal
+                    bookItem={bookItem}
+                    setBookItem={setBookItem}
+                ></BookingModal>
             }
         </div>
     );

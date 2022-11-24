@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SingleCategory = ({ categoryItem }) => {
+const SingleCategory = ({ categoryItem, setBookItem }) => {
 
     const { category_name, image, bookName, location, originalPrice
         , resalePrice, used, posted, seller } = categoryItem;
@@ -59,12 +59,14 @@ const SingleCategory = ({ categoryItem }) => {
                     </div>
 
                     <div class="sm:flex sm:items-end sm:justify-end">
-                        <Link
-                            to="#"
+                        <label
+                            onClick={() => setBookItem(categoryItem)}
+                            htmlFor="booking-modal"
                             class="block bg-red-400 px-5 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-red-500"
                         >
                             Book Now
-                        </Link>
+                        </label>
+
                     </div>
                 </div>
             </article>
