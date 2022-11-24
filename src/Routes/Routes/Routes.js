@@ -3,7 +3,13 @@ import Login from "../../Components/Login/Login/Login";
 import Signup from "../../Components/Login/SignUp/Signup";
 import Blogs from "../../Components/Pages/Blogs/Blogs";
 import Category from "../../Components/Pages/Category/Category";
+import AddProduct from "../../Components/Pages/Dashboard/AddProduct/AddProduct";
+import AllBuyers from "../../Components/Pages/Dashboard/AllBuyers/AllBuyers";
+import AllSellers from "../../Components/Pages/Dashboard/AllSellers/AllSellers";
 import Dashboard from "../../Components/Pages/Dashboard/Dashboard";
+import MyOrders from "../../Components/Pages/Dashboard/MyOrders/MyOrders";
+import MyProducts from "../../Components/Pages/Dashboard/MyProducts/MyProducts";
+import ReportedItems from "../../Components/Pages/Dashboard/ReportedItems/ReportedItems";
 import Home from "../../Components/Pages/Home/Home";
 import ErrorPage from "../../Components/Shared/ErrorPage/ErrorPage";
 import DashboardLayout from "../../Layouts/DashboardLayout";
@@ -51,8 +57,28 @@ export const routes = createBrowserRouter([
         element: <DashboardLayout></DashboardLayout>,
         children: [
             {
-                path: '/dashboard',
-                element: <Dashboard></Dashboard>
+                path: '/dashboard/add',
+                element: <AddProduct></AddProduct>
+            },
+            {
+                path: '/dashboard/allBuyers',
+                element: <AllBuyers></AllBuyers>
+            },
+            {
+                path: '/dashboard/allSellers',
+                element: <AllSellers></AllSellers>
+            },
+            {
+                path: '/dashboard/myOrders',
+                element: <MyOrders></MyOrders>
+            },
+            {
+                path: '/dashboard/myProducts',
+                element: <MyProducts></MyProducts>
+            },
+            {
+                path: '/dashboard/reported',
+                element: <ReportedItems></ReportedItems>
             }
         ]
     },
