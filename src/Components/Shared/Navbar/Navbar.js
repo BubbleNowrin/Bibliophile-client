@@ -7,6 +7,8 @@ const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    console.log(user);
+
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -74,8 +76,9 @@ const Navbar = () => {
                     {
                         user?.email ?
                             <>
-                                <li className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none">
-                                    <p>{user?.displayName}</p>
+                                <li className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide transition duration-200 rounded">
+                                    <img style={{ height: '30px' }} className='rounded-full mr-2' src={user?.photoURL} alt="" />
+                                    <p>Hello,{user?.displayName}</p>
                                 </li>
                                 <li>
                                     <button
@@ -203,6 +206,9 @@ const Navbar = () => {
                                         {
                                             user?.email ?
                                                 <>
+                                                    <li className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide transition duration-200 rounded">
+                                                        <p>Hello,{user?.displayName}</p>
+                                                    </li>
                                                     <li>
                                                         <button
                                                             onClick={handleLogOut}

@@ -17,15 +17,34 @@ const Signup = () => {
         const form = event.target;
         const name = form.name.value;
         const photoURL = form.photoURL.value;
+        const role = form.role.value;
         const email = form.email.value;
         const password = form.password.value;
 
-        // console.log(name, photoURL, email, password);
+        const newUser = {
+            displayName: name,
+            email: email,
+            photoURL: photoURL,
+            role: role
+        }
+        // console.log(name, photoURL, email, password, role);
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                form.reset();
+                // form.reset();
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+
                 handleUpdateUserProfile(name, photoURL);
                 navigate('/');
             })
@@ -40,6 +59,24 @@ const Signup = () => {
         googleLogin(googleProvider)
             .then(result => {
                 const user = result.user;
+                const newUser = {
+                    displayName: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    role: 'Buyer'
+                }
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    })
                 console.log(user);
                 navigate('/');
             })
@@ -76,6 +113,10 @@ const Signup = () => {
                         <div>
                             <input name='name' type="text" id="name" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent mb-2" placeholder="Your name" required />
                             <input name='photoURL' type="text" id="photo" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent mb-2" placeholder="Your photoURL" required />
+                            <select name='role' className="select select-primary w-full max-w-xs mb-2 ml-6">
+                                <option defaultValue>Buyer</option>
+                                <option>Seller</option>
+                            </select>
                         </div>
                         <div className="flex flex-col mb-2">
                             <div className="flex relative ">
