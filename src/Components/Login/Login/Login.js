@@ -23,10 +23,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 const newUser = {
-                    displayName: user.displayName,
-                    email: user.email,
-                    photoURL: user.photoURL,
-                    role: 'Buyer'
+                    email: email
                 }
 
                 fetch('http://localhost:5000/users', {
@@ -56,7 +53,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 const newUser = {
-                    displayName: user.displayName,
+                    userName: user.displayName,
                     email: user.email,
                     photoURL: user.photoURL,
                     role: 'Buyer'

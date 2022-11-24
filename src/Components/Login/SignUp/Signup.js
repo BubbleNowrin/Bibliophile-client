@@ -22,7 +22,7 @@ const Signup = () => {
         const password = form.password.value;
 
         const newUser = {
-            displayName: name,
+            userName: name,
             email: email,
             photoURL: photoURL,
             role: role
@@ -60,7 +60,7 @@ const Signup = () => {
             .then(result => {
                 const user = result.user;
                 const newUser = {
-                    displayName: user.displayName,
+                    userName: user.displayName,
                     email: user.email,
                     photoURL: user.photoURL,
                     role: 'Buyer'
