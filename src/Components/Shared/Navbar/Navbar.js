@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../Assets/logo/logo.jpg'
+import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => {
+                console.log(err);
+            })
+    }
     return (
         <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
             <div className="relative flex items-center justify-between">
@@ -61,16 +71,37 @@ const Navbar = () => {
                     </li>
                 </ul>
                 <ul className="flex items-center hidden space-x-8 lg:flex">
-                    <li>
-                        <Link
-                            to="/login"
-                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
-                            aria-label="Sign up"
-                            title="login"
-                        >
-                            Login
-                        </Link>
-                    </li>
+                    {
+                        user?.email ?
+                            <>
+                                <li className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none">
+                                    <p>{user?.displayName}</p>
+                                </li>
+                                <li>
+                                    <button
+                                        onClick={handleLogOut}
+                                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
+                                        aria-label="Sign up"
+                                        title="login"
+                                    >
+                                        Log Out
+                                    </button>
+                                </li>
+                            </>
+                            :
+                            <>
+                                <li>
+                                    <Link
+                                        to="/login"
+                                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
+                                        aria-label="Sign up"
+                                        title="login"
+                                    >
+                                        Login
+                                    </Link>
+                                </li>
+                            </>
+                    }
                 </ul>
                 <div className="lg:hidden">
                     <button
@@ -169,16 +200,34 @@ const Navbar = () => {
                                                 About us
                                             </Link>
                                         </li>
-                                        <li>
-                                            <Link
-                                                to="/login"
-                                                className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
-                                                aria-label="Sign up"
-                                                title="Sign up"
-                                            >
-                                                Login
-                                            </Link>
-                                        </li>
+                                        {
+                                            user?.email ?
+                                                <>
+                                                    <li>
+                                                        <button
+                                                            onClick={handleLogOut}
+                                                            className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
+                                                            aria-label="Sign up"
+                                                            title="Sign up"
+                                                        >
+                                                            Log Out
+                                                        </button>
+                                                    </li>
+                                                </>
+                                                :
+                                                <>
+                                                    <li>
+                                                        <Link
+                                                            to="/login"
+                                                            className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
+                                                            aria-label="Sign up"
+                                                            title="Sign up"
+                                                        >
+                                                            Login
+                                                        </Link>
+                                                    </li>
+                                                </>
+                                        }
                                     </ul>
                                 </nav>
                             </div>
