@@ -12,8 +12,8 @@ const Sale = () => {
                     <img src={image} alt="" className="h-96 object-cover dark:bg-gray-500 aspect-video" />
                     <div className="flex flex-col justify-center flex-1 p-6 dark:bg-gray-900">
                         <span className="text-xs uppercase dark:text-gray-400">Sale! Sale! Sale!</span>
-                        <h3 className="text-3xl font-bold">Special 50% off for Students!!!</h3>
-                        <p className="my-6 dark:text-gray-400">We care about students. So, we arranged special discounts for students. What are you waiting for? Hurry Up!!</p>
+                        <h3 className="text-4xl font-bold">Special 50% off for Students!!!</h3>
+                        <p className="my-6 dark:text-gray-400 font-serif">We care about students. So, we arranged special discounts for students. What are you waiting for? Hurry Up!!</p>
                         <a
                             className="group flex items-center justify-between rounded-lg border border-gray-600 bg-gray-600 px-5 py-3 transition-colors hover:bg-transparent focus:outline-none focus:ring self-start"
                             href="/download"

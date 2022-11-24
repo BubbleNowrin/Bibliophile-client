@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../../Components/Login/Login/Login";
 import Signup from "../../Components/Login/SignUp/Signup";
-import AboutUs from "../../Components/Pages/AboutUs/AboutUs";
 import Blogs from "../../Components/Pages/Blogs/Blogs";
+import Category from "../../Components/Pages/Category/Category";
 import Dashboard from "../../Components/Pages/Dashboard/Dashboard";
 import Home from "../../Components/Pages/Home/Home";
 import ErrorPage from "../../Components/Shared/ErrorPage/ErrorPage";
+import DashboardLayout from "../../Layouts/DashboardLayout";
 import Main from "../../Layouts/Main";
 
 export const routes = createBrowserRouter([
@@ -23,16 +24,17 @@ export const routes = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/dashboard',
-                element: <Dashboard></Dashboard>
+                path: '/category',
+                element: <Category></Category>
+            },
+            {
+                path: '/category/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
+                element: <Category></Category>
             },
             {
                 path: '/blogs',
                 element: <Blogs></Blogs>
-            },
-            {
-                path: '/about',
-                element: <AboutUs></AboutUs>
             },
             {
                 path: '/login',
@@ -43,6 +45,16 @@ export const routes = createBrowserRouter([
                 element: <Signup></Signup>
             },
         ]
-    }
+    },
+    {
+        path: '/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <Dashboard></Dashboard>
+            }
+        ]
+    },
 
 ])
