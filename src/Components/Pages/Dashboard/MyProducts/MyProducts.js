@@ -8,7 +8,7 @@ const MyProducts = () => {
 
     const { user } = useContext(AuthContext);
 
-    const { data: books } = useQuery({
+    const { data: books, refetch } = useQuery({
         queryKey: ['books'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/myBooks?email=${user?.email}`);
@@ -18,7 +18,29 @@ const MyProducts = () => {
     })
 
     const handleDelete = (id) => {
+        fetch(`http://localhost:5000/books/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.deletedCount > 0) {
+                    refetch();
+                }
+            })
+    };
 
+    const handleAdvertise = (id) => {
+        fetch(`http://localhost:5000/books/${id}`, {
+            method: 'PUT',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    refetch();
+                }
+            })
     }
 
     return (
@@ -43,7 +65,7 @@ const MyProducts = () => {
                                 key={book._id}
                                 book={book}
                                 handleDelete={handleDelete}
-                            // handleVerify={handleVerify}
+                                handleAdvertise={handleAdvertise}
                             ></Product>)
                         }
                     </tbody>
