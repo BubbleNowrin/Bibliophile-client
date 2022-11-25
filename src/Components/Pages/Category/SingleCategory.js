@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { GoVerified } from 'react-icons/go';
+import { MdAttachMoney } from 'react-icons/md';
 
 const SingleCategory = ({ categoryItem, setBookItem }) => {
 
+    const [verified, setVerified] = useState(false);
     const { category_name, image, bookName, location, originalPrice
-        , resalePrice, used, posted, seller } = categoryItem;
+        , resalePrice, used, posted, seller, sellerEmail } = categoryItem;
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/verifiedSeller?email=${sellerEmail}`)
+            .then(res => res.json())
+            .then(data => {
+                setVerified(data.verifyStatus);
+            })
+    }, [sellerEmail])
 
     return (
 
@@ -38,24 +49,29 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                         </Link>
 
                         <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                            Original Price:{originalPrice}
+                            Original Price: ${originalPrice}
 
                         </p>
                         <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                            Resale Price:{resalePrice}
+                            Resale Price: ${resalePrice}
                         </p>
                         <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                            Location:{location}
+                            Location: {location}
                         </p>
                         <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                            Posted on:{posted}
+                            Posted on: {posted}
                         </p>
                         <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                            Used for:{used}
+                            Used for: {used}
                         </p>
-                        <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                            Seller:{seller}
-                        </p>
+                        <div className='flex items-center'>
+                            <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
+                                Seller: {seller}
+                            </p>
+                            {
+                                sellerEmail && verified && <span className='text-blue-700 ml-2 mt-2'><GoVerified /></span>
+                            }
+                        </div>
                     </div>
 
                     <div class="sm:flex sm:items-end sm:justify-end">

@@ -62,14 +62,16 @@ const AddProduct = () => {
                         resalePrice: resalePrice,
                         used: used,
                         posted: time,
-                        seller: user.userName,
+                        status: 'available',
+                        seller: user?.displayName,
+                        sellerEmail: user?.email,
                         condition: condition,
                         purchaseYear: purchaseYear,
                         mobileNumber: mobileNumber,
                         description: description
                     }
 
-                    fetch('http://localhost:5000/category', {
+                    fetch('http://localhost:5000/books', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

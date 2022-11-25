@@ -4,7 +4,6 @@ import Seller from './Seller';
 
 const AllSellers = () => {
 
-    const [verified, setVerified] = useState(false);
     const { data: sellers, refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
@@ -36,7 +35,6 @@ const AllSellers = () => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
                     refetch();
-                    setVerified(true);
                 }
             })
     };
@@ -63,7 +61,7 @@ const AllSellers = () => {
                                 seller={seller}
                                 handleDelete={handleDelete}
                                 handleVerify={handleVerify}
-                                verified={verified}
+
                             ></Seller>)
                         }
                     </tbody>

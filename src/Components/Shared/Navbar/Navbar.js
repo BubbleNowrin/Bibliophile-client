@@ -79,16 +79,6 @@ const Navbar = () => {
                             Blogs
                         </Link>
                     </li>
-                    <li>
-                        <Link
-                            to="/category"
-                            aria-label="About us"
-                            title="Category"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                            Categories
-                        </Link>
-                    </li>
                 </ul>
                 <ul className="flex items-center hidden space-x-8 lg:flex">
                     {
@@ -212,16 +202,7 @@ const Navbar = () => {
                                                 Blogs
                                             </Link>
                                         </li>
-                                        <li>
-                                            <Link
-                                                to="/category"
-                                                aria-label="About us"
-                                                title="Category"
-                                                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                            >
-                                                Categories
-                                            </Link>
-                                        </li>
+
                                         {
                                             user?.email ?
                                                 <>

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Seller = ({ seller, handleDelete, handleVerify, verified }) => {
+const Seller = ({ seller, handleDelete, handleVerify }) => {
 
-    const { userName, photoURL, email, _id } = seller;
+    const { userName, photoURL, email, _id, verifyStatus } = seller;
     return (
         <tr>
             <th>
@@ -27,7 +27,7 @@ const Seller = ({ seller, handleDelete, handleVerify, verified }) => {
                 <button onClick={() => handleDelete(_id)} className="btn btn-primary btn-md">Delete</button>
             </th>
             <th>
-                <button onClick={() => handleVerify(_id)} disabled={verified} className="btn btn-primary btn-md">Verify</button>
+                <button onClick={() => handleVerify(_id)} disabled={verifyStatus} className="btn btn-primary btn-md">Verify</button>
             </th>
 
         </tr>

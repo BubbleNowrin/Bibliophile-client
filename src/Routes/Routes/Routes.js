@@ -37,7 +37,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:5000/books/${params.id}`),
                 element: <PrivateRoutes><Category></Category></PrivateRoutes>
             },
             {
@@ -58,6 +58,10 @@ export const routes = createBrowserRouter([
         path: '/dashboard',
         element: <DashboardLayout></DashboardLayout>,
         children: [
+            {
+                path: '/dashboard',
+                element: <MyOrders></MyOrders>
+            },
             {
                 path: '/dashboard/add',
                 element: <AddProduct></AddProduct>
