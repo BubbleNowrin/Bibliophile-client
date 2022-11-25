@@ -15,7 +15,8 @@ const BookingModal = ({ bookItem, setBookItem }) => {
             bookName: bookItem.bookName,
             resalePrice: bookItem.resalePrice,
             mobileNumber: mobile,
-            location: place
+            location: place,
+            image: bookItem.image
         }
 
         fetch('http://localhost:5000/bookings', {

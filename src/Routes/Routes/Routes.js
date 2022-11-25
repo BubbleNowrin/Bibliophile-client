@@ -9,6 +9,7 @@ import AllSellers from "../../Components/Pages/Dashboard/AllSellers/AllSellers";
 import Dashboard from "../../Components/Pages/Dashboard/Dashboard";
 import MyOrders from "../../Components/Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../Components/Pages/Dashboard/MyProducts/MyProducts";
+import Payment from "../../Components/Pages/Dashboard/Payment/Payment";
 import ReportedItems from "../../Components/Pages/Dashboard/ReportedItems/ReportedItems";
 import Home from "../../Components/Pages/Home/Home";
 import ErrorPage from "../../Components/Shared/ErrorPage/ErrorPage";
@@ -79,7 +80,12 @@ export const routes = createBrowserRouter([
             {
                 path: '/dashboard/reported',
                 element: <ReportedItems></ReportedItems>
-            }
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+            },
         ]
     },
 
