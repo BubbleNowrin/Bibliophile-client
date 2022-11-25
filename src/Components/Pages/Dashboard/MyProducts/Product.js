@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Product = ({ book, handleDelete, handleAdvertise }) => {
+const Product = ({ book, handleDelete, handleAdvertise, advertise }) => {
 
     const { bookName, resalePrice, status, _id } = book;
     return (
