@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Seller = ({ seller, handleDelete, handleVerify }) => {
+const Seller = ({ seller, handleDelete, handleVerify, verified }) => {
 
     const { userName, photoURL, email, _id } = seller;
     return (
@@ -27,8 +27,9 @@ const Seller = ({ seller, handleDelete, handleVerify }) => {
                 <button onClick={() => handleDelete(_id)} className="btn btn-primary btn-md">Delete</button>
             </th>
             <th>
-                <button onClick={() => handleVerify(_id)} className="btn btn-primary btn-md">Verify</button>
+                <button onClick={() => handleVerify(_id)} disabled={verified} className="btn btn-primary btn-md">Verify</button>
             </th>
+
         </tr>
     );
 };

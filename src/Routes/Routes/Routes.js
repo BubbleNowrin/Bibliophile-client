@@ -15,6 +15,7 @@ import Home from "../../Components/Pages/Home/Home";
 import ErrorPage from "../../Components/Shared/ErrorPage/ErrorPage";
 import DashboardLayout from "../../Layouts/DashboardLayout";
 import Main from "../../Layouts/Main";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 export const routes = createBrowserRouter([
     {
@@ -32,12 +33,12 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/category',
-                element: <Category></Category>
+                element: <PrivateRoutes><Category></Category></PrivateRoutes>
             },
             {
                 path: '/category/:id',
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
-                element: <Category></Category>
+                element: <PrivateRoutes><Category></Category></PrivateRoutes>
             },
             {
                 path: '/blogs',

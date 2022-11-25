@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import Seller from './Seller';
 
 const AllSellers = () => {
 
+    const [verified, setVerified] = useState(false);
     const { data: sellers, refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
@@ -14,7 +15,7 @@ const AllSellers = () => {
     })
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/buyers/${id}`, {
+        fetch(`http://localhost:5000/sellers/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -27,7 +28,17 @@ const AllSellers = () => {
     };
 
     const handleVerify = (id) => {
-
+        fetch(`http://localhost:5000/sellers/${id}`, {
+            method: 'PUT',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    setVerified(true);
+                }
+            })
     };
     return (
         <div>
@@ -52,6 +63,7 @@ const AllSellers = () => {
                                 seller={seller}
                                 handleDelete={handleDelete}
                                 handleVerify={handleVerify}
+                                verified={verified}
                             ></Seller>)
                         }
                     </tbody>
