@@ -7,7 +7,7 @@ import useAdmin from '../hooks/useAdmin';
 const DashboardLayout = () => {
 
     const { user } = useContext(AuthContext);
-    // const [isAdmin] = useAdmin(user?.email);
+    const [isAdmin] = useAdmin(user?.email);
     return (
         <div>
             <Navbar></Navbar>
@@ -23,16 +23,13 @@ const DashboardLayout = () => {
                         <li><Link to='/dashboard/myOrders'>My Orders</Link></li>
                         <li><Link to='/dashboard/add'>Add a Product</Link></li>
                         <li><Link to='/dashboard/myProducts'>My Products</Link></li>
-                        <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
-                        <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
-                        <li><Link to='/dashboard/reported'>Reported Items</Link></li>
-                        {/* {
+                        {
                             isAdmin && <>
                                 <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
                                 <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
                                 <li><Link to='/dashboard/reported'>Reported Items</Link></li>
                             </>
-                        } */}
+                        }
                     </ul>
 
                 </div>

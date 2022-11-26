@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
 
 
+
 const AddProduct = () => {
 
     const { user } = useContext(AuthContext);
@@ -42,6 +43,8 @@ const AddProduct = () => {
 
         const formData = new FormData();
         formData.append("image", image);
+
+        console.log(location, time, used);
 
         const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
         fetch(url, {
@@ -93,79 +96,116 @@ const AddProduct = () => {
     return (
         <div>
             <h2 className='text-3xl font-serif'>Add a Product</h2>
-            <section className="p-6 bg-gray-600  text-gray-50">
-                <form onSubmit={handleSubmit} action="" className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid">
-                    <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
-                        <div className="space-y-2 col-span-full lg:col-span-1 flex items-center">
-                            <p className="font-medium">Products Information</p>
-                        </div>
-                        <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-                            <div className="col-span-full sm:col-span-3">
-                                <label for="firstname" className="text-sm">Product Name</label>
-                                <input name="productName" id="firstname" type="text" placeholder="Product name" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2" required />
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label for="location" className="text-sm">Location</label>
-                                <input name="location" id="firstname" type="text" placeholder="Location" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2" required />
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label for="oPrice" className="text-sm">Original Price</label>
-                                <input name="oPrice" id="lastname" type="text" placeholder="Original Price" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2" required />
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label for="rPrice" className="text-sm">Resale Price</label>
-                                <input name="rPrice" id="lastname" type="text" placeholder="Resale Price" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2" required />
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label for="used" className="text-sm">Years of Use</label>
-                                <input name="used" id="lastname" type="text" placeholder="Years of Use" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2" required />
-                            </div>
-                            <div className="col-span-full sm:col-span-3 text-gray-800">
-                                <select name='condition' className="select select-bordered select-primary w-full max-w-xs mb-2" required>
-                                    <option disabled>Pick one</option>
-                                    <option>Excellent</option>
-                                    <option>Good</option>
-                                    <option>Fair</option>
-                                </select>
-                            </div>
-                            <div className="col-span-full sm:col-span-3 text-gray-800">
-                                <select name='purchaseYear' className="select select-bordered select-primary w-full max-w-xs mb-2" required>
-                                    <option disabled>Pick One</option>
-                                    <option>2022</option>
-                                    <option>2021</option>
-                                    <option>2020</option>
-                                    <option>2019</option>
-                                    <option>2018</option>
-                                    <option>2017</option>
-                                    <option>2016</option>
-                                </select>
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label for="mobileNumber" className="text-sm">Mobile Number</label>
-                                <input name="mobileNumber" id="number" type="text" placeholder="Mobile Number" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2" required />
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <textarea name='description' className='mt-5 w-full text-gray-900' placeholder="Description" required></textarea>
-                            </div>
-                            <div className="col-span-full sm:col-span-3 bg-white">
-                                <label for="number" className="text-sm">Image</label>
-                                <input name="image" id="lastname" type="file" placeholder="Mobile Number" className="w-full rounded-md border-gray-700 text-gray-900" required />
-                            </div>
+            <section class="bg-primary rounded-lg shadow mt-5 w-9/12 mx-auto">
 
-                            <div className="col-span-full sm:col-span-3 text-gray-800 mt-3">
-                                <select name='categoryName' className="select select-bordered select-primary w-full max-w-xs mb-2 text-gray-900" required>
-                                    {
-                                        categories.map(category => <option key={category._id}>{category.category_name}</option>)
-                                    }
-                                </select>
+                <div class="px-4 py-8 sm:px-10 mx-auto">
+                    <div class="relative mt-6">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300">
                             </div>
-                            <button className='btn btn-outline'>Submit</button>
                         </div>
+                        <div class="relative flex justify-center text-sm leading-5">
+                            <span class="px-2 text-gray-500 bg-white">
+                                Add Products Details Here
+                            </span>
+                        </div>
+                    </div>
 
-                    </fieldset>
-                </form>
+                    <div class="mt-6">
+                        <form onSubmit={handleSubmit}>
+                            <fieldset class="w-9/12 mx-auto space-y-6">
+                                <div class="w-full">
+                                    <div class=" relative ">
+                                        <input name="productName" id="" type="text" placeholder="Product name" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2 border" required />
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <div class=" relative ">
+                                        <input name="location" id="" type="text" placeholder="Location" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2 border" required />
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <div class=" relative ">
+                                        <input name="oPrice" id="" type="text" placeholder="Original Price" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2 border" required />
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <div class=" relative ">
+                                        <input name="rPrice" id="lastname" type="text" placeholder="Resale Price" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2 border" required />
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <div class=" relative ">
+                                        <input name="used" id="lastname" type="text" placeholder="Years of Use" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2 border" required />
+                                    </div>
+                                </div>
+
+
+                                <div class="w-full">
+                                    <div class=" relative ">
+                                        <input name="mobileNumber" id="number" type="text" placeholder="Mobile Number" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2 border" required />
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <div class=" relative ">
+                                        <textarea name='description' className='mt-5 w-full text-gray-900 border' placeholder="Description" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <div class=" relative ">
+                                        <label for="number" className="text-sm">Image</label>
+                                        <input name="image" id="" type="file" placeholder="Mobile Number" className="w-full rounded-md text-gray-900 border" required />
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <div class=" relative ">
+                                        <select name='condition' className="select select-bordered select-primary w-full max-w-xs mb-2" required>
+                                            <option disabled>Pick one</option>
+                                            <option>Excellent</option>
+                                            <option>Good</option>
+                                            <option>Fair</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <div class=" relative ">
+                                        <select name='purchaseYear' className="select select-bordered select-primary w-full max-w-xs mb-2" required>
+                                            <option disabled>Pick One</option>
+                                            <option>2022</option>
+                                            <option>2021</option>
+                                            <option>2020</option>
+                                            <option>2019</option>
+                                            <option>2018</option>
+                                            <option>2017</option>
+                                            <option>2016</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <div class=" relative ">
+                                        <select name='categoryName' className="select select-bordered select-primary w-full max-w-xs mb-2 text-gray-900" required>
+                                            {
+                                                categories.map(category => <option key={category._id}>{category.category_name}</option>)
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <span class="block w-full rounded-md shadow-sm">
+                                        <button type="submit" class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                            Submit
+                                        </button>
+                                    </span>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                </div>
+
             </section>
-        </div>
+        </div >
     );
 };
 

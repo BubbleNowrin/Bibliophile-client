@@ -57,7 +57,7 @@ export const routes = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
         children: [
             {
                 path: '/dashboard',
@@ -69,11 +69,11 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/allBuyers',
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoutes><AllBuyers></AllBuyers></AdminRoutes>
             },
             {
                 path: '/dashboard/allSellers',
-                element: <AllSellers></AllSellers>
+                element: <AdminRoutes><AllSellers></AllSellers></AdminRoutes>
             },
             {
                 path: '/dashboard/myOrders',
@@ -85,7 +85,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/reported',
-                element: <ReportedItems></ReportedItems>
+                element: <AdminRoutes><ReportedItems></ReportedItems></AdminRoutes>
             },
             {
                 path: '/dashboard/payment/:id',

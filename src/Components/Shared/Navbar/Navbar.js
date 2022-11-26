@@ -59,16 +59,19 @@ const Navbar = () => {
                             Home
                         </Link>
                     </li>
-                    <li>
-                        <Link
-                            to="/dashboard"
-                            aria-label="Our product"
-                            title="dashboard"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                            Dashboard
-                        </Link>
-                    </li>
+                    {
+                        user?.email &&
+                        <li>
+                            <Link
+                                to="/dashboard"
+                                aria-label="Our product"
+                                title="dashboard"
+                                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                            >
+                                Dashboard
+                            </Link>
+                        </li>
+                    }
                     <li>
                         <Link
                             to="/blogs"
@@ -182,16 +185,19 @@ const Navbar = () => {
                                                 Home
                                             </Link>
                                         </li>
-                                        <li>
-                                            <Link
-                                                to="/dashboard"
-                                                aria-label="Our product"
-                                                title="dashboard"
-                                                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                            >
-                                                Dashboard
-                                            </Link>
-                                        </li>
+                                        {
+                                            user?.email &&
+                                            <li>
+                                                <Link
+                                                    to="/dashboard"
+                                                    aria-label="Our product"
+                                                    title="dashboard"
+                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                >
+                                                    Dashboard
+                                                </Link>
+                                            </li>
+                                        }
                                         <li>
                                             <Link
                                                 to="/blogs"
