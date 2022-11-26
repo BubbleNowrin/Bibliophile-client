@@ -16,6 +16,7 @@ import ErrorPage from "../../Components/Shared/ErrorPage/ErrorPage";
 import DashboardLayout from "../../Layouts/DashboardLayout";
 import Main from "../../Layouts/Main";
 import AdminRoutes from "../AdminRoutes/AdminRoutes";
+import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import SellerRoute from "../SellerRoute/SellerRoute";
 
@@ -62,7 +63,7 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <MyOrders></MyOrders>
+                element: <Dashboard></Dashboard>
             },
             {
                 path: '/dashboard/add',
@@ -78,7 +79,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/myOrders',
-                element: <MyOrders></MyOrders>
+                element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             },
             {
                 path: '/dashboard/myProducts',
