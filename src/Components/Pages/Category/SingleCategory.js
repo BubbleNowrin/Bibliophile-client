@@ -7,7 +7,7 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
 
     const [verified, setVerified] = useState(false);
     const { category_name, image, bookName, location, originalPrice
-        , resalePrice, used, posted, seller, sellerEmail } = categoryItem;
+        , resalePrice, used, posted, seller, sellerEmail, _id } = categoryItem;
 
     useEffect(() => {
         fetch(`http://localhost:5000/verifiedSeller?email=${sellerEmail}`)
@@ -16,6 +16,19 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                 setVerified(data.verifyStatus);
             })
     }, [sellerEmail])
+
+    const handleAddReport = (id) => {
+        fetch(`http://localhost:5000/reported/${id}`, {
+            method: 'PUT',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    //toast
+                }
+            })
+    }
 
     return (
 
@@ -72,6 +85,7 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                                 sellerEmail && verified && <span className='text-blue-700 ml-2 mt-2'><GoVerified /></span>
                             }
                         </div>
+                        <button onClick={() => handleAddReport(_id)} className='btn btn-outline'>Report</button>
                     </div>
 
                     <div class="sm:flex sm:items-end sm:justify-end">
