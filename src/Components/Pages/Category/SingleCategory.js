@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { GoVerified } from 'react-icons/go';
-import { MdAttachMoney } from 'react-icons/md';
+import { GoPin, GoVerified } from 'react-icons/go';
+import { FcMoneyTransfer } from 'react-icons/fc';
+import { FaRecycle } from 'react-icons/fa';
+import { RiUserLocationFill, RiFlag2Fill } from 'react-icons/ri';
+import { MdDataUsage } from 'react-icons/md';
+import { BsFillPersonBadgeFill } from 'react-icons/bs';
 
 const SingleCategory = ({ categoryItem, setBookItem }) => {
 
@@ -41,7 +45,7 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                     >
                         <span>{category_name}</span>
                         <span class="w-px flex-1 bg-gray-900/10"></span>
-                        <span>Oct 10</span>
+                        <span>{category_name}</span>
                     </time>
                 </div>
 
@@ -56,43 +60,71 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                 <div class="flex flex-1 flex-col justify-between">
                     <div class="border-l border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
                         <Link to="#">
-                            <h3 class="font-bold uppercase text-gray-900">
+                            <h3 class="font-serif text-xl uppercase text-gray-900">
                                 {bookName}
                             </h3>
                         </Link>
 
-                        <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                            Original Price: ${originalPrice}
-
-                        </p>
-                        <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                            Resale Price: ${resalePrice}
-                        </p>
-                        <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                            Location: {location}
-                        </p>
-                        <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                            Posted on: {posted}
-                        </p>
-                        <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                            Used for: {used}
-                        </p>
+                        <div className='flex items-center'>
+                            <FcMoneyTransfer className='mt-2'></FcMoneyTransfer>
+                            <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
+                                <span className='font-bold'>Original Price:</span> ${originalPrice}
+                            </p>
+                        </div>
+                        <div className='flex items-center'>
+                            <FaRecycle className='mt-2 text-green-500'></FaRecycle>
+                            <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
+                                <span className='font-bold'> Resale Price:</span> ${resalePrice}
+                            </p>
+                        </div>
+                        <div className='flex items-center'>
+                            <RiUserLocationFill className='mt-2 text-red-600'></RiUserLocationFill>
+                            <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
+                                <span className='font-bold'>Location:</span> {location}
+                            </p>
+                        </div>
                         <div className='flex items-center'>
                             <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                                Seller: {seller}
+                                <span className='font-bold ml-4'>Posted on:</span> {posted}
                             </p>
+                            <GoPin className=' text-red-600'></GoPin>
+                        </div>
+                        <div className='flex items-center'>
+                            <MdDataUsage className='mt-2 text-red-600'></MdDataUsage>
+                            <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
+                                <span className='font-bold'>Used for:</span> {used}
+                                months</p>
+                        </div>
+                        <div className='flex items-center'>
+                            <div className='flex items-center'>
+                                <BsFillPersonBadgeFill className='mt-2 text-blue-600'></BsFillPersonBadgeFill>
+                                <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
+                                    <span className='font-bold'>Seller:</span> {seller}
+                                </p>
+                            </div>
                             {
                                 sellerEmail && verified && <span className='text-blue-700 ml-2 mt-2'><GoVerified /></span>
                             }
                         </div>
-                        <button onClick={() => handleAddReport(_id)} className='btn btn-outline'>Report</button>
-                    </div>
 
+                        <div className='flex flex-col justify-end items-end'>
+                            <button
+                                class="inline-block rounded-full border border-red-600 bg-red-600 p-2 text-white hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring active:text-red-500"
+                                onClick={() => handleAddReport(_id)}
+                            >
+                                <span class="sr-only">Report</span>
+                                <div className='flex'>
+                                    <span className='text-xs'>Report</span>
+                                    <RiFlag2Fill className='ml-1'></RiFlag2Fill>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
                     <div class="sm:flex sm:items-end sm:justify-end">
                         <label
                             onClick={() => setBookItem(categoryItem)}
                             htmlFor="booking-modal"
-                            class="block bg-red-400 px-5 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-red-500"
+                            class="block bg-red-400 px-7 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-red-500"
                         >
                             Book Now
                         </label>

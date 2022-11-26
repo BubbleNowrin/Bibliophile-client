@@ -15,6 +15,7 @@ import Home from "../../Components/Pages/Home/Home";
 import ErrorPage from "../../Components/Shared/ErrorPage/ErrorPage";
 import DashboardLayout from "../../Layouts/DashboardLayout";
 import Main from "../../Layouts/Main";
+import AdminRoutes from "../AdminRoutes/AdminRoutes";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 export const routes = createBrowserRouter([

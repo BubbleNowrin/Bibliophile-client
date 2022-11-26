@@ -11,7 +11,8 @@ const Category = () => {
     const categoryItems = useLoaderData();
 
     return (
-        <div className='grid grid-cols-1 gap-6 my-6'>
+
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 my-6'>
 
             {
                 categoryItems.map(categoryItem => <SingleCategory
