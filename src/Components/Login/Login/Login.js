@@ -44,7 +44,22 @@ const Login = () => {
                     })
                 console.log(user);
                 form.reset();
-                navigate(from, { replace: true });
+
+                //get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log(data);
+                        localStorage.setItem('Token', data.token);
+                        navigate(from, { replace: true });
+                    })
+
             })
             .catch(error => {
                 const errorCode = error.code;
@@ -75,8 +90,25 @@ const Login = () => {
                     .then(data => {
                         console.log(data);
                     })
+
+                const jwtUser = {
+                    email: user.email
+                }
+                //get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(jwtUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log(data);
+                        localStorage.setItem('Token', data.token);
+                        navigate(from, { replace: true });
+                    })
                 console.log(user);
-                navigate(from, { replace: true });
             })
             .catch(error => {
                 const errorCode = error.code;

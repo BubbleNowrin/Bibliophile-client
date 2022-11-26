@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const BookingModal = ({ bookItem, setBookItem }) => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const handleBooking = (event) => {
         event.preventDefault();
@@ -22,11 +22,17 @@ const BookingModal = ({ bookItem, setBookItem }) => {
         fetch('http://localhost:5000/bookings', {
             method: 'POST',
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                authorization: `bearer ${localStorage.getItem('Token')}`
             },
             body: JSON.stringify(booking)
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
+                }
+                return res.json();
+            })
             .then(data => {
                 if (data.acknowledged) {
                     setBookItem(null);

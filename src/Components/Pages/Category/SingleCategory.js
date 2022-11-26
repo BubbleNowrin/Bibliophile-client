@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GoPin, GoVerified } from 'react-icons/go';
 import { FcMoneyTransfer } from 'react-icons/fc';
@@ -6,26 +6,48 @@ import { FaRecycle } from 'react-icons/fa';
 import { RiUserLocationFill, RiFlag2Fill } from 'react-icons/ri';
 import { MdDataUsage } from 'react-icons/md';
 import { BsFillPersonBadgeFill } from 'react-icons/bs';
+import axios from 'axios';
+import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const SingleCategory = ({ categoryItem, setBookItem }) => {
+
+    const { logOut } = useContext(AuthContext);
 
     const [verified, setVerified] = useState(false);
     const { category_name, image, bookName, location, originalPrice
         , resalePrice, used, posted, seller, sellerEmail, _id } = categoryItem;
 
+    const date = posted.slice(0, 10);
+    const time = posted.split('T')[1].slice(0, 8);
+
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/verifiedSeller?email=${sellerEmail}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setVerified(data.verifyStatus);
+    //         })
+    // }, [sellerEmail])
+
     useEffect(() => {
-        fetch(`http://localhost:5000/verifiedSeller?email=${sellerEmail}`)
-            .then(res => res.json())
-            .then(data => {
-                setVerified(data.verifyStatus);
+        axios.get(`http://localhost:5000/verifiedSeller?email=${sellerEmail}`)
+            .then(res => {
+                setVerified(res.data);
             })
     }, [sellerEmail])
 
     const handleAddReport = (id) => {
         fetch(`http://localhost:5000/reported/${id}`, {
             method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('Token')}`
+            }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401 && res.status === 403) {
+                    return logOut();
+                }
+                return res.json()
+            })
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
@@ -45,7 +67,7 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                     >
                         <span>{category_name}</span>
                         <span className="w-px flex-1 bg-gray-900/10"></span>
-                        <span>{category_name}</span>
+                        <span>{date}</span>
                     </time>
                 </div>
 
@@ -85,7 +107,7 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                         </div>
                         <div className='flex items-center'>
                             <p className="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                                <span className='font-bold ml-4'>Posted on:</span> {posted}
+                                <span className='font-bold ml-4'>Posted Time:</span>{time}
                             </p>
                             <GoPin className=' text-red-600'></GoPin>
                         </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Product = ({ book, handleDelete, handleAdvertise, advertise }) => {
+const Product = ({ book, handleDelete, handleAdvertise }) => {
 
-    const { bookName, resalePrice, status, _id } = book;
+    const { bookName, resalePrice, status, _id, advertise } = book;
     return (
         <tr>
             <th>
@@ -28,7 +28,7 @@ const Product = ({ book, handleDelete, handleAdvertise, advertise }) => {
                 <button onClick={() => handleDelete(_id)} className="btn btn-primary btn-md">Delete</button>
             </th>
             <th>
-                <button onClick={() => handleAdvertise(_id)} className="btn btn-primary btn-md">Advertise</button>
+                <button onClick={() => handleAdvertise(_id)} disabled={advertise === "true"} className="btn btn-primary btn-md">Advertise</button>
             </th>
 
         </tr>

@@ -12,6 +12,10 @@ const AdvertisedItems = () => {
             return data;
         }
     })
+
+    if (advertisedItems?.length === 0) {
+        return <div></div>
+    }
     return (
         <div className='mt-16 mb-16' >
             <h2 className='text-4xl text-center font-serif mb-12'>Advertisement</h2>
@@ -22,7 +26,6 @@ const AdvertisedItems = () => {
                         advertised={advertised}
                     ></AdvertisedItem>)
                 }
-
             </div>
         </div>
     );

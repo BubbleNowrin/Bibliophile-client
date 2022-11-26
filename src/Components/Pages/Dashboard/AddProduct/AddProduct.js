@@ -7,7 +7,7 @@ import { AuthContext } from '../../../../Contexts/AuthProvider';
 
 const AddProduct = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -77,11 +77,17 @@ const AddProduct = () => {
                     fetch('http://localhost:5000/books', {
                         method: 'POST',
                         headers: {
-                            'content-type': 'application/json'
+                            'content-type': 'application/json',
+                            authorization: `bearer ${localStorage.getItem('Token')}`
                         },
                         body: JSON.stringify(book)
                     })
-                        .then(res => res.json())
+                        .then(res => {
+                            if (res.status === 401 || res.status === 403) {
+                                return logOut();
+                            }
+                            return res.json();
+                        })
                         .then(data => {
                             console.log(data);
                             if (data.acknowledged) {

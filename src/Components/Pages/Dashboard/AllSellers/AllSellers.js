@@ -1,13 +1,23 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../../../Contexts/AuthProvider';
 import Seller from './Seller';
 
 const AllSellers = () => {
 
+    const { logOut } = useContext(AuthContext);
+
     const { data: sellers, refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/sellers');
+            const res = await fetch('http://localhost:5000/sellers', {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('Token')}`
+                }
+            });
+            if (res.status === 401 || res.status === 403) {
+                return logOut();
+            }
             const data = res.json();
             return data;
         }
@@ -16,8 +26,16 @@ const AllSellers = () => {
     const handleDelete = (id) => {
         fetch(`http://localhost:5000/sellers/${id}`, {
             method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('Token')}`
+            }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
+                }
+                return res.json();
+            })
             .then(data => {
                 console.log(data);
                 if (data.deletedCount > 0) {
@@ -29,8 +47,16 @@ const AllSellers = () => {
     const handleVerify = (id) => {
         fetch(`http://localhost:5000/sellers/${id}`, {
             method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('Token')}`
+            }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
+                }
+                res.json()
+            })
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount > 0) {

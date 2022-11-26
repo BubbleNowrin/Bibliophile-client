@@ -1,13 +1,23 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../../Contexts/AuthProvider';
 import Buyer from './Buyer';
 
 const AllBuyers = () => {
 
+    const { logOut } = useContext(AuthContext);
+
     const { data: buyers, refetch } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/buyers');
+            const res = await fetch('http://localhost:5000/buyers', {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('Token')}`
+                }
+            });
+            if (res.status === 401 || res.status === 403) {
+                return logOut();
+            }
             const data = res.json();
             return data;
         }
@@ -16,8 +26,16 @@ const AllBuyers = () => {
     const handleDelete = (id) => {
         fetch(`http://localhost:5000/buyers/${id}`, {
             method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('Token')}`
+            }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
+                }
+                return res.json();
+            })
             .then(data => {
                 console.log(data);
                 if (data.deletedCount > 0) {

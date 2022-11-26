@@ -5,12 +5,19 @@ import Order from './Order';
 
 const MyOrders = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const { data: bookings } = useQuery({
         queryKey: ['bookings'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`);
+            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('Token')}`
+                }
+            });
+            if (res.status === 401 || res.status === 403) {
+                return logOut();
+            }
             const data = res.json();
             return data;
         }

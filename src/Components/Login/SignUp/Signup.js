@@ -1,13 +1,17 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { ImGoogle } from 'react-icons/im';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const Signup = () => {
 
     const { createUser, googleLogin, updateUserProfile } = useContext(AuthContext);
+
+    const location = useLocation();
     const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/'
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -46,7 +50,23 @@ const Signup = () => {
                     })
 
                 handleUpdateUserProfile(name, photoURL);
-                navigate('/');
+                const jwtUser = {
+                    email: user.email
+                }
+                //get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(jwtUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log(data);
+                        localStorage.setItem('Token', data.token);
+                        navigate(from, { replace: true });
+                    })
             })
             .catch(error => {
                 const errorCode = error.code;
@@ -76,9 +96,28 @@ const Signup = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data);
+
                     })
                 console.log(user);
-                navigate('/');
+                const jwtUser = {
+                    email: user.email
+                }
+
+                //get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(jwtUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log(data);
+                        localStorage.setItem('Token', data.token);
+                        navigate(from, { replace: true });
+                    })
+
             })
             .catch(error => {
                 const errorCode = error.code;

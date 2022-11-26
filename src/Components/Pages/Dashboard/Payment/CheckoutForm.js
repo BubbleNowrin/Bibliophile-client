@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../../Contexts/AuthProvider';
 
 const CheckoutForm = ({ bookingDetails }) => {
     const [cardError, setCardError] = useState('');
@@ -7,6 +8,8 @@ const CheckoutForm = ({ bookingDetails }) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState("");
+
+    const { logOut } = useContext(AuthContext);
 
     const stripe = useStripe();
     const elements = useElements();
@@ -18,13 +21,19 @@ const CheckoutForm = ({ bookingDetails }) => {
         fetch("http://localhost:5000/create-payment-intent", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                authorization: `bearer ${localStorage.getItem('Token')}`
             },
             body: JSON.stringify({ resalePrice }),
         })
-            .then((res) => res.json())
+            .then((res) => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
+                }
+                return res.json()
+            })
             .then((data) => setClientSecret(data.clientSecret));
-    }, [resalePrice]);
+    }, [resalePrice, logOut]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -83,11 +92,17 @@ const CheckoutForm = ({ bookingDetails }) => {
             fetch('http://localhost:5000/payments', {
                 method: 'POST',
                 headers: {
-                    "content-type": "application/json"
+                    "content-type": "application/json",
+                    authorization: `bearer ${localStorage.getItem('Token')}`
                 },
                 body: JSON.stringify(payment)
             })
-                .then(res => res.json())
+                .then(res => {
+                    if (res.status === 401 || res.status === 403) {
+                        return logOut();
+                    }
+                    return res.json()
+                })
                 .then(data => {
                     if (data.insertedId) {
                         setSuccess('Payment Successful');
