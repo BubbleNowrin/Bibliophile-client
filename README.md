@@ -40,3 +40,10 @@ This project is built using the following technologies:
 - Sweet Alert
 - React-Icons
 - MongoDB
+
+## Admin Credentials
+
+adminEmail: \<admin1@gmail.com\>
+
+adminPassword: \<asdfgh\>
+

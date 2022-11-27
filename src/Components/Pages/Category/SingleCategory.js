@@ -146,16 +146,17 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                             </p>
                         </div>
                         <div className='flex items-center'>
-                            <p className="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                                <span className='font-bold ml-4'>Posted Time:</span>{time}
-                            </p>
                             <GoPin className=' text-red-600'></GoPin>
+                            <p className="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
+                                <span className='font-bold'>Posted Time: </span>{time}
+                            </p>
+
                         </div>
                         <div className='flex items-center'>
                             <MdDataUsage className='mt-2 text-red-600'></MdDataUsage>
                             <p className="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-                                <span className='font-bold'>Used for:</span> {used}
-                                months</p>
+                                <span className='font-bold'>Used for: </span> {used}
+                                years</p>
                         </div>
                         <div className='flex items-center'>
                             <div className='flex items-center'>
@@ -169,15 +170,15 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                             }
                         </div>
 
-                        <div className='flex flex-col justify-end items-end absolute right-2 top-1'>
+                        <div className='flex flex-col justify-end items-end absolute top-10 right-2 lg:right-2 lg:top-1'>
                             <button
                                 className={`inline-block rounded-full p-2 ${makeRed && "text-red-600"}`}
                                 onClick={() => handleAddReport(_id)}
                             >
                                 <span className="sr-only">Report</span>
-                                <div className='flex items-center'>
+                                <div className='flex items-center border border-red-600 rounded-xl p-1'>
+                                    <small className='text-xs'>Report</small>
                                     <RiFlag2Fill className='ml-1'></RiFlag2Fill>
-                                    <span className='text-xs'>Report</span>
                                 </div>
                             </button>
                         </div>

@@ -20,7 +20,7 @@ const Payment = () => {
             <Helmet>
                 <title>Bibliophile - Payment</title>
             </Helmet>
-            <h3 className="text-3xl font-serif">Payment for {bookingDetails.bookName}</h3>
+            <h3 className="text-3xl font-serif ml-2">Payment for {bookingDetails.bookName}</h3>
             <p className='text-xl'>Please Pay ${bookingDetails.resalePrice}</p>
             <div className='w-96 border p-10 border-slate-900 border-dashed my-10'>
                 <Elements stripe={stripePromise}>

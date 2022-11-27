@@ -33,7 +33,7 @@ const Order = ({ booking }) => {
                     booking.resalePrice && !booking.paid && <Link to={`/dashboard/payment/${booking._id}`}><button className="btn btn-primary btn-md">Pay</button></Link>
                 }
                 {
-                    booking.resalePrice && booking.paid && <span className=" text-primary ">Paid</span>
+                    booking.resalePrice && booking.paid && <span className=" text-green-600 ">Paid</span>
                 }
             </th>
         </tr>

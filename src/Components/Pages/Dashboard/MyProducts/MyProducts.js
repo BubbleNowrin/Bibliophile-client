@@ -47,8 +47,9 @@ const MyProducts = () => {
             .then(data => {
                 console.log(data);
                 if (data.deletedCount > 0) {
-                    notifyDelete();
+
                     refetch();
+                    notifyDelete();
                 }
             })
     };
@@ -69,8 +70,9 @@ const MyProducts = () => {
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
-                    notifyAdvertised();
+
                     refetch();
+                    notifyAdvertised();
                     navigate('/');
                 }
             })
@@ -81,7 +83,7 @@ const MyProducts = () => {
             <Helmet>
                 <title>Bibliophile - Dashboard</title>
             </Helmet>
-            <h2 className='text-3xl font-serif'>My Products</h2>
+            <h2 className='text-3xl font-serif ml-2'>My Products</h2>
             <div className="overflow-x-auto  w-full">
                 <table className="table w-full">
                     <thead>

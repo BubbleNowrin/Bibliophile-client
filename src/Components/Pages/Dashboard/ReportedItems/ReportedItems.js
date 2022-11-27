@@ -49,7 +49,7 @@ const ReportedItems = () => {
     };
     return (
         <div>
-            <h2 className='text-3xl font-serif'>Reported Items</h2>
+            <h2 className='text-3xl font-serif ml-2'>Reported Items</h2>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     <thead>
