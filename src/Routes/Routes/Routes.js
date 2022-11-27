@@ -3,6 +3,7 @@ import Login from "../../Components/Login/Login/Login";
 import Signup from "../../Components/Login/SignUp/Signup";
 import Blogs from "../../Components/Pages/Blogs/Blogs";
 import Category from "../../Components/Pages/Category/Category";
+import SingleCategory from "../../Components/Pages/Category/SingleCategory";
 import AddProduct from "../../Components/Pages/Dashboard/AddProduct/AddProduct";
 import AllBuyers from "../../Components/Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../Components/Pages/Dashboard/AllSellers/AllSellers";
@@ -33,10 +34,6 @@ export const routes = createBrowserRouter([
             {
                 path: '/home',
                 element: <Home></Home>
-            },
-            {
-                path: '/category',
-                element: <PrivateRoutes><Category></Category></PrivateRoutes>
             },
             {
                 path: '/category/:id',

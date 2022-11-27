@@ -3,7 +3,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ImGoogle } from 'react-icons/im';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import toast from 'react-hot-toast';
 
+
+const notify = () => toast.success('Successfully Logged in!');
+const notifyError = (message) => toast.error(message);
 const Login = () => {
 
     const { signIn, googleLogin } = useContext(AuthContext);
@@ -57,6 +61,7 @@ const Login = () => {
                     .then(data => {
                         // console.log(data);
                         localStorage.setItem('Token', data.token);
+                        notify();
                         navigate(from, { replace: true });
                     })
 
@@ -64,6 +69,7 @@ const Login = () => {
             .catch(error => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                notifyError(errorMessage);
                 console.log(errorMessage);
             })
     }
@@ -106,6 +112,7 @@ const Login = () => {
                     .then(data => {
                         // console.log(data);
                         localStorage.setItem('Token', data.token);
+                        notify();
                         navigate(from, { replace: true });
                     })
                 console.log(user);
@@ -113,6 +120,7 @@ const Login = () => {
             .catch(error => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                notifyError(errorMessage);
                 console.log(errorMessage);
             })
     }

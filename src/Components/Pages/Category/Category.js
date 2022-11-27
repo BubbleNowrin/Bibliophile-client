@@ -9,13 +9,14 @@ const Category = () => {
 
     console.log(bookItem);
     const categoryItems = useLoaderData();
+    console.log(categoryItems);
 
     return (
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 my-6'>
 
             {
-                categoryItems.map(categoryItem => <SingleCategory
+                categoryItems?.map(categoryItem => <SingleCategory
                     key={categoryItem._id}
                     categoryItem={categoryItem}
                     setBookItem={setBookItem}

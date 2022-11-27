@@ -17,7 +17,7 @@ const Categories = () => {
     return (
         <div className='mt-14 mb-36'>
             <h2 className='text-4xl text-center font-serif mb-10'>Categories</h2>
-            <div className="flex flex-wrap items-center justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 w-[80%] mx-auto items-center justify-center gap-y-10 lg:gap-y-0">
                 {
                     categories.map(category => <Link to={`/category/${category._id}`}>
                         <div className="flex-shrink-0 mx-2 -mb-6 relative overflow-hidden bg-base-300 rounded-lg max-w-xs shadow-lg hover:scale-110 ease-in duration-100">

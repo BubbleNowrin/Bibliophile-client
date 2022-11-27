@@ -7,7 +7,7 @@ const AdvertisedItem = ({ advertised }) => {
     console.log(image);
     return (
         <div >
-            <div className="card w-96  bg-base-100 shadow-xl image-full">
+            <div className="card w-96 h-64 bg-base-100 shadow-xl image-full">
                 <figure><img src={image} alt="" className='w-44' /></figure>
                 <div className="card-body">
                     <h2 className="text-3xl font-serif text-white">{bookName}</h2>

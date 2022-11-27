@@ -11,22 +11,17 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const SingleCategory = ({ categoryItem, setBookItem }) => {
 
+    console.log(categoryItem);
     const { logOut } = useContext(AuthContext);
 
     const [verified, setVerified] = useState(false);
+    const [makeRed, setMakeRed] = useState(false);
     const { category_name, image, bookName, location, originalPrice
-        , resalePrice, used, posted, seller, sellerEmail, _id } = categoryItem;
+        , resalePrice, used, posted, seller, sellerEmail, _id, report } = categoryItem;
+
 
     const date = posted.slice(0, 10);
     const time = posted.split('T')[1].slice(0, 8);
-
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/verifiedSeller?email=${sellerEmail}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setVerified(data.verifyStatus);
-    //         })
-    // }, [sellerEmail])
 
     useEffect(() => {
         axios.get(`http://localhost:5000/verifiedSeller?email=${sellerEmail}`)
@@ -36,6 +31,7 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
     }, [sellerEmail])
 
     const handleAddReport = (id) => {
+        setMakeRed(true);
         fetch(`http://localhost:5000/reported/${id}`, {
             method: 'PUT',
             headers: {
@@ -59,7 +55,7 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
     return (
 
         <div>
-            <article className="flex bg-white transition hover:shadow-xl">
+            <article className=" flex bg-white transition hover:shadow-xl lg:h-96">
                 <div className="rotate-180 p-2 [writing-mode:_vertical-lr]">
                     <time
 
@@ -79,8 +75,15 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                     />
                 </div>
 
-                <div className="flex flex-1 flex-col justify-between">
-                    <div className="border-l border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
+                <div className=" flex flex-1 flex-col justify-between">
+                    <div className="lg:hidden sm:block sm:basis-56">
+                        <img
+                            alt=""
+                            src={image}
+                            className="aspect-square h-full w-full object-cover"
+                        />
+                    </div>
+                    <div className=" relative border-l border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
                         <Link to="#">
                             <h3 className="font-serif text-xl uppercase text-gray-900">
                                 {bookName}
@@ -129,15 +132,15 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                             }
                         </div>
 
-                        <div className='flex flex-col justify-end items-end'>
+                        <div className='flex flex-col justify-end items-end absolute right-4 top-6'>
                             <button
-                                className="inline-block rounded-full border border-red-600 bg-red-600 p-2 text-white hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring active:text-red-500"
+                                className={`inline-block rounded-full p-2 ${makeRed && "text-red-600"}`}
                                 onClick={() => handleAddReport(_id)}
                             >
                                 <span className="sr-only">Report</span>
-                                <div className='flex'>
-                                    <span className='text-xs'>Report</span>
+                                <div className='flex items-center'>
                                     <RiFlag2Fill className='ml-1'></RiFlag2Fill>
+                                    <span className='text-xs'>Report</span>
                                 </div>
                             </button>
                         </div>

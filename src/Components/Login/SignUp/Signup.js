@@ -1,8 +1,13 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { ImGoogle } from 'react-icons/im';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
+
+
+const notify = () => toast.success('Successfully registerd!');
+const notifyError = (message) => toast.error(message);
 
 const Signup = () => {
 
@@ -65,12 +70,14 @@ const Signup = () => {
                     .then(data => {
                         // console.log(data);
                         localStorage.setItem('Token', data.token);
+                        notify();
                         navigate(from, { replace: true });
                     })
             })
             .catch(error => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                notifyError(errorMessage);
                 console.log(errorMessage);
             })
     }
@@ -115,6 +122,7 @@ const Signup = () => {
                     .then(data => {
                         // console.log(data);
                         localStorage.setItem('Token', data.token);
+                        notify();
                         navigate(from, { replace: true });
                     })
 
@@ -122,6 +130,7 @@ const Signup = () => {
             .catch(error => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                notifyError(errorMessage);
                 console.log(errorMessage);
             })
     }

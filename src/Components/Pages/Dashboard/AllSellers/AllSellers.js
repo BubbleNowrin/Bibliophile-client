@@ -55,7 +55,7 @@ const AllSellers = () => {
                 if (res.status === 401 || res.status === 403) {
                     return logOut();
                 }
-                res.json()
+                return res.json()
             })
             .then(data => {
                 console.log(data);
