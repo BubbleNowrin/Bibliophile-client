@@ -1,10 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../Contexts/AuthProvider";
 import Product from "./Product";
 
+const notifyDelete = () => toast.success('Deleted Successfully');
+const notifyAdvertised = () => toast.success('Advertised Successfully! Check Advertisements');
 
 const MyProducts = () => {
+
+    const navigate = useNavigate();
 
     const { user, logOut } = useContext(AuthContext);
 
@@ -40,6 +46,7 @@ const MyProducts = () => {
             .then(data => {
                 console.log(data);
                 if (data.deletedCount > 0) {
+                    notifyDelete();
                     refetch();
                 }
             })
@@ -61,7 +68,9 @@ const MyProducts = () => {
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
+                    notifyAdvertised();
                     refetch();
+                    navigate('/');
                 }
             })
     }

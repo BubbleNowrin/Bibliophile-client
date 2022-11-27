@@ -1,7 +1,11 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
 
+
+const notifySuccess = () => toast.success('Payment Successful!');
 const CheckoutForm = ({ bookingDetails }) => {
     const [cardError, setCardError] = useState('');
     const [success, setSuccess] = useState('');
@@ -13,6 +17,8 @@ const CheckoutForm = ({ bookingDetails }) => {
 
     const stripe = useStripe();
     const elements = useElements();
+
+    const navigate = useNavigate();
 
     const { resalePrice, userName, email, _id, bookId } = bookingDetails;
 
@@ -106,13 +112,16 @@ const CheckoutForm = ({ bookingDetails }) => {
                 })
                 .then(data => {
                     if (data.insertedId) {
+                        notifySuccess();
                         setSuccess('Payment Successful');
                         setTransactionId(paymentIntent.id);
+                        // setProcessing(false);
+                        navigate('/dashboard/myOrders');
                     }
                 })
 
         }
-        setProcessing(false);
+
 
     }
 

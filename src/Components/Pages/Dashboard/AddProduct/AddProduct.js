@@ -1,9 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
 
 
+const notify = () => toast.success('Product Added Successfully');
 
 const AddProduct = () => {
 
@@ -91,6 +93,7 @@ const AddProduct = () => {
                         .then(data => {
                             console.log(data);
                             if (data.acknowledged) {
+                                notify();
                                 navigate('/dashboard/myProducts');
                             }
                         })

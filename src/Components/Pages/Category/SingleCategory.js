@@ -8,17 +8,22 @@ import { MdDataUsage } from 'react-icons/md';
 import { BsFillPersonBadgeFill } from 'react-icons/bs';
 import axios from 'axios';
 import { AuthContext } from '../../../Contexts/AuthProvider';
+import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
+import useBuyer from '../../../hooks/useBuyer';
 
+const notify = () => toast.error('You have reported already!')
 const SingleCategory = ({ categoryItem, setBookItem }) => {
 
     console.log(categoryItem);
     const { logOut, user } = useContext(AuthContext);
 
+    const [isBuyer] = useBuyer(user?.email);
+
     const [verified, setVerified] = useState(false);
     const [makeRed, setMakeRed] = useState(false);
     const { category_name, image, bookName, location, originalPrice
         , resalePrice, used, posted, seller, sellerEmail, _id } = categoryItem;
-
 
     const date = posted.slice(0, 10);
     const time = posted.split('T')[1].slice(0, 8);
@@ -31,31 +36,53 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
     }, [sellerEmail])
 
     const handleAddReport = (id) => {
-        setMakeRed(true);
-        fetch(`http://localhost:5000/reported/${id}`, {
-            method: 'PUT',
-            headers: {
-                "content-type": "application/json",
-                authorization: `bearer ${localStorage.getItem('Token')}`
-            },
-            body: JSON.stringify({ email: user?.email, reportId: id })
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Report it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setMakeRed(true);
+                fetch(`http://localhost:5000/reported/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        "content-type": "application/json",
+                        authorization: `bearer ${localStorage.getItem('Token')}`
+                    },
+                    body: JSON.stringify({ email: user?.email, reportId: id })
+
+                })
+                    .then(res => {
+                        if (res.status === 401 && res.status === 403) {
+                            return logOut();
+                        }
+                        return res.json()
+                    })
+                    .then(data => {
+                        console.log(data);
+                        if (data.acknowledged) {
+                            //toast reported successfully
+                            Swal.fire(
+                                'Reported!',
+                                'You Reported Successfully.',
+                                'success'
+                            )
+
+                        }
+                        if (data.error) {
+                            //toast can not report
+                            notify();
+                        }
+                    })
+
+            }
 
         })
-            .then(res => {
-                if (res.status === 401 && res.status === 403) {
-                    return logOut();
-                }
-                return res.json()
-            })
-            .then(data => {
-                console.log(data);
-                if (data.modifiedCount > 0) {
-                    //toast reported successfully
-                }
-                if (data.error) {
-                    //toast can not report
-                }
-            })
+
     }
 
     return (
@@ -138,7 +165,7 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                             }
                         </div>
 
-                        <div className='flex flex-col justify-end items-end absolute right-4 top-6'>
+                        <div className='flex flex-col justify-end items-end absolute right-2 top-1'>
                             <button
                                 className={`inline-block rounded-full p-2 ${makeRed && "text-red-600"}`}
                                 onClick={() => handleAddReport(_id)}
@@ -152,13 +179,15 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                         </div>
                     </div>
                     <div className="sm:flex sm:items-end sm:justify-end">
-                        <label
-                            onClick={() => setBookItem(categoryItem)}
-                            htmlFor="booking-modal"
-                            className="block bg-red-400 px-7 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-red-500"
-                        >
-                            Book Now
-                        </label>
+                        {
+                            isBuyer && <label
+                                onClick={() => setBookItem(categoryItem)}
+                                htmlFor="booking-modal"
+                                className="block bg-red-400 px-7 py-3 text-center text-xs font-bold uppercase text-gray-900 transition hover:bg-red-500"
+                            >
+                                Book Now
+                            </label>
+                        }
 
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { GoVerified } from 'react-icons/go';
 
 const Seller = ({ seller, handleDelete, handleVerify }) => {
 
@@ -15,8 +16,9 @@ const Seller = ({ seller, handleDelete, handleVerify }) => {
             <td>
                 <div className="flex items-center space-x-3">
 
-                    <div>
-                        <div className="font-bold">{userName}</div>
+                    <div className='flex items-center justify-center'>
+                        <div className="font-bold">{userName} </div>
+                        {verifyStatus && <GoVerified className='text-blue-600  ml-1' />}
                     </div>
                 </div>
             </td>

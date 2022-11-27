@@ -6,31 +6,34 @@ import SingleCategory from './SingleCategory';
 const Category = () => {
 
     const [bookItem, setBookItem] = useState(null);
-
+    // const [categoryName, setCategoryName] = useState('');
     console.log(bookItem);
     const categoryItems = useLoaderData();
-    console.log(categoryItems);
 
     return (
 
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 my-6'>
+        <div>
+            <h2 className="text-3xl text-serif mb-10">{categoryItems[0].category_name}</h2>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 my-6'>
 
-            {
-                categoryItems?.map(categoryItem => <SingleCategory
-                    key={categoryItem._id}
-                    categoryItem={categoryItem}
-                    setBookItem={setBookItem}
-                ></SingleCategory>
+                {
+                    categoryItems?.map(categoryItem => <SingleCategory
+                        key={categoryItem._id}
+                        categoryItem={categoryItem}
+                        setBookItem={setBookItem}
+                    // setCategoryName={setCategoryName}
+                    ></SingleCategory>
 
-                )
-            }
-            {
-                bookItem &&
-                <BookingModal
-                    bookItem={bookItem}
-                    setBookItem={setBookItem}
-                ></BookingModal>
-            }
+                    )
+                }
+                {
+                    bookItem &&
+                    <BookingModal
+                        bookItem={bookItem}
+                        setBookItem={setBookItem}
+                    ></BookingModal>
+                }
+            </div>
         </div>
     );
 };

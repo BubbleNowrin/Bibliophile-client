@@ -1,7 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
 import Seller from './Seller';
+
+
+const notifyDelete = () => toast.success('Deleted Successfully');
+const notifyVerify = () => toast.success('Verified Successfully');
 
 const AllSellers = () => {
 
@@ -39,6 +44,7 @@ const AllSellers = () => {
             .then(data => {
                 console.log(data);
                 if (data.deletedCount > 0) {
+                    notifyDelete();
                     refetch();
                 }
             })
@@ -60,6 +66,7 @@ const AllSellers = () => {
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
+                    notifyVerify();
                     refetch();
                 }
             })

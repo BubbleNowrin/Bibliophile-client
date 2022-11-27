@@ -1,8 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
 import Buyer from './Buyer';
 
+
+const notifyDeleted = () => toast.success('Deleted Successfully!')
 const AllBuyers = () => {
 
     const { logOut } = useContext(AuthContext);
@@ -39,6 +42,7 @@ const AllBuyers = () => {
             .then(data => {
                 console.log(data);
                 if (data.deletedCount > 0) {
+                    notifyDeleted();
                     refetch();
                 }
             })

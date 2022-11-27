@@ -1,7 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
 import Reported from './Reported';
+
+const notifyDeleted = () => toast.success('Deleted Successfully!');
 
 const ReportedItems = () => {
 
@@ -39,6 +42,7 @@ const ReportedItems = () => {
                 console.log(data);
                 if (data.deletedCount > 0) {
                     //toast
+                    notifyDeleted();
                     refetch();
                 }
             })
