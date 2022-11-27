@@ -1,5 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import { ImGoogle } from 'react-icons/im';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -42,7 +43,7 @@ const Signup = () => {
                 const user = result.user;
                 console.log(user);
                 // form.reset();
-                fetch('http://localhost:5000/users', {
+                fetch('https://assignment-product-resale-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"
@@ -59,7 +60,7 @@ const Signup = () => {
                     email: user.email
                 }
                 //get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://assignment-product-resale-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"
@@ -93,7 +94,7 @@ const Signup = () => {
                     role: 'Buyer'
                 }
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://assignment-product-resale-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"
@@ -111,7 +112,7 @@ const Signup = () => {
                 }
 
                 //get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://assignment-product-resale-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"
@@ -146,6 +147,9 @@ const Signup = () => {
     }
     return (
         <div className='min-h-screen flex justify-center items-center'>
+            <Helmet>
+                <title>Bibliophile - SignUp</title>
+            </Helmet>
             <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10 ">
                 <div className="self-center mb-6 text-xl font-bold text-gray-800 sm:text-2xl dark:text-white">
                     Sign Up

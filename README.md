@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Bibliophile
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bibliophile is a online book resale platform. Buye can buy new or old books, Seller can sell the books. 
 
-## Available Scripts
 
-In the project directory, you can run:
+## 🔗 Links
+Website Link: https://bibliophile-28720.web.app/
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Some Functionalities about the website are given below:
 
-### `npm test`
+- This website is user-friendly and easy to use.
+- It has separate login and registration page. User can login with their social accounts such as google. Besides,they can sign up and login manually with their email and password. User can choose if he/she want to signup as a buyer or seller. 
+- The Home page consistes of few sections. it hase category section, where a user can look for category specific books.
+- There is a advertisement section where a buyer can see which books are advertised and available to buy.
+- In the details page buyer can see the details of the book. the original price,resale price,pickup location etc.
+- Buyer can book and finally pay for the books using card payment system.
+- Sellers can add books to sell, view their added books, delete their product and advertise them.
+- Admin can handle everything. they can verify authentic sellers. They can delete reported items and also do some administrative tasks.
+- The Blog section provides some questions and answers of them.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## List of technologies used by 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project is built using the following technologies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React
+- React-Router-Dom
+- Tailwind CSS
+- Mamba UI
+- Kitwind
+- DaisyUI
+- HyperUI
+- Context API 
+- Firebase
+- React-Hot Toast
+- React Helmet
+- Sweet Alert
+- React-Icons
+- MongoDB

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
+import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../Contexts/AuthProvider";
@@ -17,7 +18,7 @@ const MyProducts = () => {
     const { data: books, refetch } = useQuery({
         queryKey: ['books'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/myBooks?email=${user?.email}`, {
+            const res = await fetch(`https://assignment-product-resale-server.vercel.app/myBooks?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('Token')}`
                 }
@@ -31,7 +32,7 @@ const MyProducts = () => {
     })
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/books/${id}`, {
+        fetch(`https://assignment-product-resale-server.vercel.app/books/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem("Token")}`
@@ -53,7 +54,7 @@ const MyProducts = () => {
     };
 
     const handleAdvertise = (id) => {
-        fetch(`http://localhost:5000/books/${id}`, {
+        fetch(`https://assignment-product-resale-server.vercel.app/books/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('Token')}`
@@ -77,6 +78,9 @@ const MyProducts = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Bibliophile - Dashboard</title>
+            </Helmet>
             <h2 className='text-3xl font-serif'>My Products</h2>
             <div className="overflow-x-auto  w-full">
                 <table className="table w-full">

@@ -1,8 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const Blogs = () => {
     return (
         <section className="dark:bg-gray-800 dark:text-gray-100  mb-20">
+            <Helmet>
+                <title>Bibliophile - Blogs</title>
+            </Helmet>
             <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
                 <h2 className="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl">Blogs</h2>
                 <div className="divide-y divide-gray-700">

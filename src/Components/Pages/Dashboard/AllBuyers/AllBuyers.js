@@ -13,7 +13,7 @@ const AllBuyers = () => {
     const { data: buyers, refetch } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/buyers', {
+            const res = await fetch('https://assignment-product-resale-server.vercel.app/buyers', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('Token')}`
                 }
@@ -27,7 +27,7 @@ const AllBuyers = () => {
     })
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/buyers/${id}`, {
+        fetch(`https://assignment-product-resale-server.vercel.app/buyers/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('Token')}`
@@ -49,6 +49,7 @@ const AllBuyers = () => {
     };
     return (
         <div>
+
             <h2 className='text-3xl font-serif'>All Buyers</h2>
             <div className="overflow-x-auto  w-full">
                 <table className="table w-full">

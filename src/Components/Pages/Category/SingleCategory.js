@@ -11,6 +11,7 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import useBuyer from '../../../hooks/useBuyer';
+import { Helmet } from 'react-helmet-async';
 
 const notify = () => toast.error('You have reported already!')
 const SingleCategory = ({ categoryItem, setBookItem }) => {
@@ -29,7 +30,7 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
     const time = posted.split('T')[1].slice(0, 8);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/verifiedSeller?email=${sellerEmail}`)
+        axios.get(`https://assignment-product-resale-server.vercel.app/verifiedSeller?email=${sellerEmail}`)
             .then(res => {
                 setVerified(res.data);
             })
@@ -47,7 +48,7 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 setMakeRed(true);
-                fetch(`http://localhost:5000/reported/${id}`, {
+                fetch(`https://assignment-product-resale-server.vercel.app/reported/${id}`, {
                     method: 'PUT',
                     headers: {
                         "content-type": "application/json",
@@ -89,6 +90,9 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
 
         <div>
             <article className=" flex bg-white transition hover:shadow-xl lg:h-96">
+                <Helmet>
+                    <title>Bibliophile - Books</title>
+                </Helmet>
                 <div className="rotate-180 p-2 [writing-mode:_vertical-lr]">
                     <time
 

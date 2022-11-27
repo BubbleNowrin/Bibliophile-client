@@ -4,6 +4,7 @@ import { ImGoogle } from 'react-icons/im';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 
 const notify = () => toast.success('Successfully Logged in!');
@@ -35,7 +36,7 @@ const Login = () => {
                     email: email
                 }
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://assignment-product-resale-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"
@@ -50,7 +51,7 @@ const Login = () => {
                 form.reset();
 
                 //get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://assignment-product-resale-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"
@@ -85,7 +86,7 @@ const Login = () => {
                     role: 'Buyer'
                 }
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://assignment-product-resale-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"
@@ -101,7 +102,7 @@ const Login = () => {
                     email: user.email
                 }
                 //get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://assignment-product-resale-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"
@@ -126,6 +127,9 @@ const Login = () => {
     }
     return (
         <div className='min-h-screen flex justify-center items-center'>
+            <Helmet>
+                <title>Bibliophile - Login</title>
+            </Helmet>
             <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10 ">
                 <div className="self-center mb-6 text-xl font-bold text-gray-800 sm:text-2xl dark:text-white">
                     Login

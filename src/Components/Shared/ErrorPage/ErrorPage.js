@@ -3,6 +3,7 @@ import { useRouteError } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import errorPic from "../../../Assets/gif/88143-error.gif"
+import { Helmet } from 'react-helmet-async';
 
 const ErrorPage = () => {
 
@@ -10,6 +11,9 @@ const ErrorPage = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Bibliophile - Error</title>
+            </Helmet>
             <div>
                 <Navbar></Navbar>
             </div>

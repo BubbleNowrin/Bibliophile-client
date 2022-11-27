@@ -25,7 +25,7 @@ const BookingModal = ({ bookItem, setBookItem }) => {
             bookId: bookItem._id
         }
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://assignment-product-resale-server.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 "content-type": "application/json",

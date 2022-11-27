@@ -1,10 +1,14 @@
 import React from 'react';
 import image from '../../../Assets/images/img8.jpg';
 import image1 from '../../../Assets/images/img4.jpg';
+import { Helmet } from 'react-helmet-async';
 
 const Banner = () => {
     return (
         <div className="mt-2">
+            <Helmet>
+                <title>Bibliophile - Home</title>
+            </Helmet>
             <div className="bg-white pb-6 sm:pb-8 lg:pb-12 p-8">
 
                 <section className="max-w-screen-2xl px-4 md:px-8 mx-auto">

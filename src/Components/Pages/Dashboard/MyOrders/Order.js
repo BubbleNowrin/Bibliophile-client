@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const Order = ({ booking }) => {
@@ -6,6 +7,9 @@ const Order = ({ booking }) => {
     const { image, bookName, resalePrice, _id } = booking;
     return (
         <tr>
+            <Helmet>
+                <title>Bibliophile - Dashboard</title>
+            </Helmet>
             <th>
                 <div className="avatar">
                     <div className="w-20 rounded">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { GoVerified } from 'react-icons/go';
 
 const Seller = ({ seller, handleDelete, handleVerify }) => {
@@ -6,6 +7,9 @@ const Seller = ({ seller, handleDelete, handleVerify }) => {
     const { userName, photoURL, email, _id, verifyStatus } = seller;
     return (
         <tr>
+            <Helmet>
+                <title>Bibliophile - Dashboard</title>
+            </Helmet>
             <th>
                 <div className="avatar">
                     <div className="w-20 rounded">

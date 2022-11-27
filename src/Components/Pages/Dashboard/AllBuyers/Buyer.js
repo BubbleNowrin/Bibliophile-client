@@ -1,10 +1,14 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const Buyer = ({ buyer, handleDelete }) => {
 
     const { userName, photoURL, email, _id } = buyer;
     return (
         <tr>
+            <Helmet>
+                <title>Bibliophile - Dashboard</title>
+            </Helmet>
             <th>
                 <div className="avatar">
                     <div className="w-20 rounded">
