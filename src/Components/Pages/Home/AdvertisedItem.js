@@ -13,7 +13,7 @@ const AdvertisedItem = ({ advertised }) => {
                     <h2 className="text-3xl font-serif text-white">{bookName}</h2>
                     <p className="text-md  text-white">{category_name}</p>
                     <div className="card-actions justify-end">
-                        <Link to={`/category/${category_id}`}><button className="btn btn-secondary text-white">Book Now</button></Link>
+                        <Link to={`/category/${category_id}`}><button className="btn btn-secondary text-white">Details</button></Link>
                     </div>
                 </div>
             </div>

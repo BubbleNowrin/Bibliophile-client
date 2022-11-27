@@ -12,12 +12,12 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 const SingleCategory = ({ categoryItem, setBookItem }) => {
 
     console.log(categoryItem);
-    const { logOut } = useContext(AuthContext);
+    const { logOut, user } = useContext(AuthContext);
 
     const [verified, setVerified] = useState(false);
     const [makeRed, setMakeRed] = useState(false);
     const { category_name, image, bookName, location, originalPrice
-        , resalePrice, used, posted, seller, sellerEmail, _id, report } = categoryItem;
+        , resalePrice, used, posted, seller, sellerEmail, _id } = categoryItem;
 
 
     const date = posted.slice(0, 10);
@@ -35,8 +35,11 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
         fetch(`http://localhost:5000/reported/${id}`, {
             method: 'PUT',
             headers: {
+                "content-type": "application/json",
                 authorization: `bearer ${localStorage.getItem('Token')}`
-            }
+            },
+            body: JSON.stringify({ email: user?.email, reportId: id })
+
         })
             .then(res => {
                 if (res.status === 401 && res.status === 403) {
@@ -47,7 +50,10 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
-                    //toast
+                    //toast reported successfully
+                }
+                if (data.error) {
+                    //toast can not report
                 }
             })
     }
