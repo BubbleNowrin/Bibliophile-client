@@ -109,12 +109,12 @@ const AddProduct = () => {
                 <title>Bibliophile - Dashboard</title>
             </Helmet>
             <h2 className='text-3xl font-serif'>Add a Product</h2>
-            <section class="bg-primary rounded-lg shadow mt-5 w-9/12 mx-auto">
+            <section class="bg-gray-300 rounded-lg shadow mt-5 lg:w-9/12 mx-auto">
 
                 <div class="px-4 py-8 sm:px-10 mx-auto">
                     <div class="relative mt-6">
                         <div class="absolute inset-0 flex items-center">
-                            <div class="w-full border-t border-gray-300">
+                            <div class="w-full border-t border-gray-500">
                             </div>
                         </div>
                         <div class="relative flex justify-center text-sm leading-5">
@@ -161,18 +161,23 @@ const AddProduct = () => {
                                 </div>
                                 <div class="w-full">
                                     <div class=" relative ">
+                                        <input name='purchaseYear' id="pYear" type="text" placeholder="Purchase Year" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2 border" required />
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <div class=" relative ">
                                         <textarea name='description' className='mt-5 w-full text-gray-900 border' placeholder="Description" required></textarea>
                                     </div>
                                 </div>
                                 <div class="w-full">
                                     <div class=" relative ">
                                         <label for="number" className="text-sm">Image</label>
-                                        <input name="image" id="" type="file" placeholder="Mobile Number" className="w-full rounded-md text-gray-900 border" required />
+                                        <input name="image" id="" type="file" placeholder="Image" className="w-full rounded-md text-gray-900 border" required />
                                     </div>
                                 </div>
                                 <div class="w-full">
                                     <div class=" relative ">
-                                        <select name='condition' className="select select-bordered select-primary w-full max-w-xs mb-2" required>
+                                        <select name='condition' className="select select-bordered select-primary w-full  mb-2" required>
                                             <option disabled>Pick one</option>
                                             <option>Excellent</option>
                                             <option>Good</option>
@@ -182,21 +187,7 @@ const AddProduct = () => {
                                 </div>
                                 <div class="w-full">
                                     <div class=" relative ">
-                                        <select name='purchaseYear' className="select select-bordered select-primary w-full max-w-xs mb-2" required>
-                                            <option disabled>Pick One</option>
-                                            <option>2022</option>
-                                            <option>2021</option>
-                                            <option>2020</option>
-                                            <option>2019</option>
-                                            <option>2018</option>
-                                            <option>2017</option>
-                                            <option>2016</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="w-full">
-                                    <div class=" relative ">
-                                        <select name='categoryName' className="select select-bordered select-primary w-full max-w-xs mb-2 text-gray-900" required>
+                                        <select name='categoryName' className="select select-bordered select-primary w-full  mb-2 text-gray-900" required>
                                             {
                                                 categories.map(category => <option key={category._id}>{category.category_name}</option>)
                                             }

@@ -196,6 +196,7 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                     </div>
                 </div>
             </article>
+
         </div>
 
     );

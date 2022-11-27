@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import logo from '../../../Assets/logo/logo.jpg'
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
+const notify = () => toast.success('Logged out Successfully')
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +13,9 @@ const Navbar = () => {
 
     const handleLogOut = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                notify();
+            })
             .catch(err => {
                 console.log(err);
             })
@@ -143,7 +147,7 @@ const Navbar = () => {
                     </button>
 
                     {isMenuOpen && (
-                        <div className="absolute top-0 left-0 w-full">
+                        <div className="absolute top-0 left-0 w-full z-20">
                             <div className="p-5 bg-white border rounded shadow-sm">
                                 <div className="flex items-center justify-between mb-4">
                                     <div>
