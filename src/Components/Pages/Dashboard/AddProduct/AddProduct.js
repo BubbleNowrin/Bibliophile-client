@@ -130,39 +130,39 @@ const AddProduct = () => {
                             <fieldset className="w-9/12 mx-auto space-y-6">
                                 <div className="w-full">
                                     <div className=" relative ">
-                                        <input name="productName" id="" type="text" placeholder="Product name" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2 border" required />
+                                        <input name="productName" id="" type="text" placeholder="Product name" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400  text-gray-900 p-2 border" required />
                                     </div>
                                 </div>
                                 <div className="w-full">
                                     <div className=" relative ">
-                                        <input name="location" id="" type="text" placeholder="Location" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2 border" required />
+                                        <input name="location" id="" type="text" placeholder="Location" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400  text-gray-900 p-2 border" required />
                                     </div>
                                 </div>
                                 <div className="w-full">
                                     <div className=" relative ">
-                                        <input name="oPrice" id="" type="text" placeholder="Original Price" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2 border" required />
+                                        <input name="oPrice" id="" type="text" placeholder="Original Price" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400  text-gray-900 p-2 border" required />
                                     </div>
                                 </div>
                                 <div className="w-full">
                                     <div className=" relative ">
-                                        <input name="rPrice" id="lastname" type="text" placeholder="Resale Price" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2 border" required />
+                                        <input name="rPrice" id="lastname" type="text" placeholder="Resale Price" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400  text-gray-900 p-2 border" required />
                                     </div>
                                 </div>
                                 <div className="w-full">
                                     <div className=" relative ">
-                                        <input name="used" id="lastname" type="text" placeholder="Years of Use" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2 border" required />
+                                        <input name="used" id="lastname" type="text" placeholder="Years of Use" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400  text-gray-900 p-2 border" required />
                                     </div>
                                 </div>
 
 
                                 <div className="w-full">
                                     <div className=" relative ">
-                                        <input name="mobileNumber" id="number" type="text" placeholder="Mobile Number" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2 border" required />
+                                        <input name="mobileNumber" id="number" type="text" placeholder="Mobile Number" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 text-gray-900 p-2 border" required />
                                     </div>
                                 </div>
                                 <div className="w-full">
                                     <div className=" relative ">
-                                        <input name='purchaseYear' id="pYear" type="text" placeholder="Purchase Year" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 text-gray-900 p-2 border" required />
+                                        <input name='purchaseYear' id="pYear" type="text" placeholder="Purchase Year" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 text-gray-900 p-2 border" required />
                                     </div>
                                 </div>
                                 <div className="w-full">

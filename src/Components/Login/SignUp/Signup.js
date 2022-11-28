@@ -152,8 +152,8 @@ const Signup = () => {
             <Helmet>
                 <title>Bibliophile - SignUp</title>
             </Helmet>
-            <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10 ">
-                <div className="self-center mb-6 text-xl font-bold text-gray-800 sm:text-2xl dark:text-white">
+            <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow sm:px-6 md:px-8 lg:px-10 ">
+                <div className="self-center mb-6 text-xl font-bold text-gray-800 sm:text-2xl ">
                     Sign Up
                 </div>
                 <div className="flex gap-4 item-center">
@@ -204,7 +204,7 @@ const Signup = () => {
                     </form>
                 </div>
                 <div className="flex items-center justify-center mt-6">
-                    <p className="inline-flex items-center text-xs text-center text-gray-900 dark:text-gray-100 dark:hover:text-white">
+                    <p className="inline-flex items-center text-xs text-center text-gray-900">
                         <span className="ml-2">
                             Already have an account?
                         </span>

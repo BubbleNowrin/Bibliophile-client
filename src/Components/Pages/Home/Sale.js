@@ -5,15 +5,15 @@ import image from '../../../Assets/images/Reading book-pana.png'
 const Sale = () => {
     return (
 
-        <section className="p-4 lg:p-8 dark:bg-gray-800 dark:text-gray-100 my-6">
+        <section className="p-4 lg:p-8 my-6">
             <div className="container mx-auto space-y-12">
 
                 <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row-reverse">
-                    <img src={image} alt="" className="h-96 object-cover dark:bg-gray-500 aspect-video" />
-                    <div className="flex flex-col justify-center flex-1 p-6 dark:bg-gray-900">
-                        <span className="text-xs uppercase dark:text-gray-400">Sale! Sale! Sale!</span>
+                    <img src={image} alt="" className="h-96 object-cover aspect-video" />
+                    <div className="flex flex-col justify-center flex-1 p-6 ">
+                        <span className="text-xs uppercase ">Sale! Sale! Sale!</span>
                         <h3 className="text-4xl font-bold">Special 50% off for Students!!!</h3>
-                        <p className="my-6 dark:text-gray-400 font-serif">We care about students. So, we arranged special discounts for students. What are you waiting for? Hurry Up!!</p>
+                        <p className="my-6 font-serif">We care about students. So, we arranged special discounts for students. What are you waiting for? Hurry Up!!</p>
                         <a
                             className="group flex items-center justify-between rounded-lg border border-gray-600 bg-gray-600 px-5 py-3 transition-colors hover:bg-transparent focus:outline-none focus:ring self-start"
                             href="/download"

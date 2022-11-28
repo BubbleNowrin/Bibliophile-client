@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 const Blogs = () => {
     return (
-        <section className="dark:bg-gray-800 dark:text-gray-100  mb-20">
+        <section className="mb-20">
             <Helmet>
                 <title>Bibliophile - Blogs</title>
             </Helmet>
