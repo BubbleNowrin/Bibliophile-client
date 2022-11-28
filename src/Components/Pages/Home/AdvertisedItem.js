@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const AdvertisedItem = ({ advertised }) => {
 
     const { bookName, category_name, image, category_id } = advertised;
-    console.log(image);
     return (
         <div >
             <div className="card w-96 h-64 bg-neutral shadow-xl image-full">

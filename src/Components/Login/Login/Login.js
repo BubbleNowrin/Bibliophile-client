@@ -35,7 +35,7 @@ const Login = () => {
                 const newUser = {
                     email: email
                 }
-                //post user into to server
+                //post user to server
                 fetch('https://assignment-product-resale-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
@@ -47,7 +47,7 @@ const Login = () => {
                     .then(data => {
                         console.log(data);
                     })
-                console.log(user);
+
                 form.reset();
 
                 //get jwt token
@@ -116,7 +116,7 @@ const Login = () => {
                         notify();
                         navigate(from, { replace: true });
                     })
-                console.log(user);
+
             })
             .catch(error => {
                 const errorCode = error.code;

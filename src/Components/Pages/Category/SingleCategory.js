@@ -16,7 +16,6 @@ import { Helmet } from 'react-helmet-async';
 const notify = () => toast.error('You have reported already!')
 const SingleCategory = ({ categoryItem, setBookItem }) => {
 
-    console.log(categoryItem);
     const { logOut, user } = useContext(AuthContext);
 
     const [isBuyer] = useBuyer(user?.email);

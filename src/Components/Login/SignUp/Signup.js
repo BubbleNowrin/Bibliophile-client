@@ -37,11 +37,10 @@ const Signup = () => {
             photoURL: photoURL,
             role: role
         }
-        // console.log(name, photoURL, email, password, role);
+
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 // form.reset();
                 //post user info to server
                 fetch('https://assignment-product-resale-server.vercel.app/users', {
@@ -108,7 +107,7 @@ const Signup = () => {
                         console.log(data);
 
                     })
-                console.log(user);
+
                 const jwtUser = {
                     email: user.email
                 }

@@ -9,7 +9,6 @@ const useBuyer = email => {
             fetch(`https://assignment-product-resale-server.vercel.app/users/buyer/${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     setIsBuyer(data.isBuyer);
                     setIsBuyerLoading(false);
                 })
