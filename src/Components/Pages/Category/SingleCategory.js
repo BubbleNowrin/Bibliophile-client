@@ -26,9 +26,11 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
     const { category_name, image, bookName, location, originalPrice
         , resalePrice, used, posted, seller, sellerEmail, _id } = categoryItem;
 
+    //get the time and date from date object
     const date = posted.slice(0, 10);
     const time = posted.split('T')[1].slice(0, 8);
 
+    //get the verified seller
     useEffect(() => {
         axios.get(`https://assignment-product-resale-server.vercel.app/verifiedSeller?email=${sellerEmail}`)
             .then(res => {
@@ -36,6 +38,7 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
             })
     }, [sellerEmail])
 
+    //sweet alert to confirm report
     const handleAddReport = (id) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -170,7 +173,7 @@ const SingleCategory = ({ categoryItem, setBookItem }) => {
                             }
                         </div>
 
-                        <div className='flex flex-col justify-end items-end absolute top-10 right-2 lg:right-2 lg:top-1'>
+                        <div className='flex flex-col justify-end items-end absolute top-10 right-2 lg:right-1 lg:-top-1'>
                             <button
                                 className={`inline-block rounded-full p-2 ${makeRed && "text-red-600"}`}
                                 onClick={() => handleAddReport(_id)}

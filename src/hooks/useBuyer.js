@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 const useBuyer = email => {
     const [isBuyer, setIsBuyer] = useState(false);
     const [isBuyerLoading, setIsBuyerLoading] = useState(true);
+    //check the buyer
     useEffect(() => {
         if (email) {
             fetch(`https://assignment-product-resale-server.vercel.app/users/buyer/${email}`)

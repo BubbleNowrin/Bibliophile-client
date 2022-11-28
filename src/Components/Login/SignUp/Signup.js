@@ -43,6 +43,7 @@ const Signup = () => {
                 const user = result.user;
                 console.log(user);
                 // form.reset();
+                //post user info to server
                 fetch('https://assignment-product-resale-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
@@ -83,6 +84,7 @@ const Signup = () => {
             })
     }
 
+    //google signUp implementation
     const handleGoogle = () => {
         googleLogin(googleProvider)
             .then(result => {
@@ -93,7 +95,7 @@ const Signup = () => {
                     photoURL: user.photoURL,
                     role: 'Buyer'
                 }
-
+                //post user info to server
                 fetch('https://assignment-product-resale-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
@@ -136,6 +138,7 @@ const Signup = () => {
             })
     }
 
+    //update user profile
     const handleUpdateUserProfile = (name, photoURL) => {
         const profile = {
             displayName: name,

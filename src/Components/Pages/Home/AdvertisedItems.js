@@ -4,6 +4,7 @@ import AdvertisedItem from './AdvertisedItem';
 
 const AdvertisedItems = () => {
 
+    //get the advertised items
     const { data: advertisedItems } = useQuery({
         queryKey: ['advertised'],
         queryFn: async () => {
@@ -12,7 +13,7 @@ const AdvertisedItems = () => {
             return data;
         }
     })
-
+    //do not show the advertisement section if no product
     if (advertisedItems?.length === 0) {
         return <div></div>
     }

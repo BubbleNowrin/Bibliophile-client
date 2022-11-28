@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet-async';
 
 const ErrorPage = () => {
 
+    //get error element
     const error = useRouteError();
 
     return (

@@ -28,6 +28,7 @@ const AddProduct = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
+        //get new product info
         const form = event.target;
         const productName = form.productName.value;
         const location = form.location.value;
@@ -47,8 +48,7 @@ const AddProduct = () => {
         const formData = new FormData();
         formData.append("image", image);
 
-        console.log(location, time, used);
-
+        //upload img to imgbb
         const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
         fetch(url, {
             method: 'POST',
@@ -77,6 +77,7 @@ const AddProduct = () => {
                         description: description
                     }
 
+                    //post product info to server
                     fetch('https://assignment-product-resale-server.vercel.app/books', {
                         method: 'POST',
                         headers: {

@@ -7,6 +7,7 @@ const MyOrders = () => {
 
     const { user, logOut } = useContext(AuthContext);
 
+    //get the user specific bookings data
     const { data: bookings } = useQuery({
         queryKey: ['bookings'],
         queryFn: async () => {

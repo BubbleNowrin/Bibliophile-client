@@ -33,7 +33,7 @@ const Seller = ({ seller, handleDelete, handleVerify }) => {
                 <button onClick={() => handleDelete(_id)} className="btn btn-primary btn-md">Delete</button>
             </th>
             <th>
-                <button onClick={() => handleVerify(_id)} disabled={verifyStatus} className="btn btn-primary btn-md">{verifyStatus ? 'verified' : 'unverified'}</button>
+                <button onClick={() => handleVerify(_id)} disabled={verifyStatus} className="btn btn-primary btn-md">{verifyStatus ? 'verified' : 'verify'}</button>
             </th>
 
         </tr>

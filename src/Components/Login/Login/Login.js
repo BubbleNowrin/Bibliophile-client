@@ -28,14 +28,14 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        // console.log(name, photoURL, email, password);
+        //sign in implementation
         signIn(email, password)
             .then(result => {
                 const user = result.user;
                 const newUser = {
                     email: email
                 }
-
+                //post user into to server
                 fetch('https://assignment-product-resale-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
@@ -60,7 +60,6 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        // console.log(data);
                         localStorage.setItem('Token', data.token);
                         notify();
                         navigate(from, { replace: true });
@@ -75,6 +74,7 @@ const Login = () => {
             })
     }
 
+    //Implement google signIn
     const handleGoogle = () => {
         googleLogin(googleProvider)
             .then(result => {
@@ -85,7 +85,7 @@ const Login = () => {
                     photoURL: user.photoURL,
                     role: 'Buyer'
                 }
-
+                //post user info to server
                 fetch('https://assignment-product-resale-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
@@ -111,7 +111,7 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        // console.log(data);
+
                         localStorage.setItem('Token', data.token);
                         notify();
                         navigate(from, { replace: true });

@@ -15,6 +15,7 @@ const MyProducts = () => {
 
     const { user, logOut } = useContext(AuthContext);
 
+    //get the specific sellers product
     const { data: books, refetch } = useQuery({
         queryKey: ['books'],
         queryFn: async () => {
@@ -31,6 +32,7 @@ const MyProducts = () => {
         }
     })
 
+    //delete the specific product data of the seller
     const handleDelete = (id) => {
         fetch(`https://assignment-product-resale-server.vercel.app/books/${id}`, {
             method: 'DELETE',
@@ -54,6 +56,7 @@ const MyProducts = () => {
             })
     };
 
+    //advertise the product of the seller
     const handleAdvertise = (id) => {
         fetch(`https://assignment-product-resale-server.vercel.app/books/${id}`, {
             method: 'PUT',

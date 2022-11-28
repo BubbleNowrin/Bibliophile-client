@@ -3,12 +3,14 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
+// toast
 const notify = () => toast.success('Booked Successfully!');
 const BookingModal = ({ bookItem, setBookItem }) => {
     const { user, logOut } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
+    //get booking info
     const handleBooking = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -25,6 +27,7 @@ const BookingModal = ({ bookItem, setBookItem }) => {
             bookId: bookItem._id
         }
 
+        //post the booking info to server
         fetch('https://assignment-product-resale-server.vercel.app/bookings', {
             method: 'POST',
             headers: {

@@ -9,7 +9,7 @@ const notifyDeleted = () => toast.success('Deleted Successfully!')
 const AllBuyers = () => {
 
     const { logOut } = useContext(AuthContext);
-
+    //get all the buyers
     const { data: buyers, refetch } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
@@ -26,6 +26,7 @@ const AllBuyers = () => {
         }
     })
 
+    //delete specific buyer
     const handleDelete = (id) => {
         fetch(`https://assignment-product-resale-server.vercel.app/buyers/${id}`, {
             method: 'DELETE',

@@ -30,10 +30,10 @@ const Order = ({ booking }) => {
             </td>
             <th>
                 {
-                    booking.resalePrice && !booking.paid && <Link to={`/dashboard/payment/${booking._id}`}><button className="btn btn-primary btn-md">Pay</button></Link>
+                    booking.resalePrice && !booking.paid && <Link to={`/dashboard/payment/${booking._id}`}><button className="btn btn-primary btn-md px-7">Pay</button></Link>
                 }
                 {
-                    booking.resalePrice && booking.paid && <span className=" text-green-600 ">Paid</span>
+                    booking.resalePrice && booking.paid && <span className=" text-green-600 border rounded-lg px-7">Paid</span>
                 }
             </th>
         </tr>

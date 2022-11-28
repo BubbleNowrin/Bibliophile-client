@@ -10,34 +10,37 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    //create user method implementation
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
+    //user sign in method implementation
     const signIn = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
+    //logout implementation
     const logOut = () => {
         setLoading(true);
         localStorage.removeItem('Token');
         return signOut(auth);
     }
 
-
+    //google login implementation
     const googleLogin = (googleProvider) => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
-
+    //user profile update implementation method
     const updateUserProfile = (profile) => {
         return updateProfile(auth.currentUser, profile);
     }
 
-
+    //observer
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);

@@ -6,7 +6,7 @@ import SingleCategory from './SingleCategory';
 const Category = () => {
 
     const [bookItem, setBookItem] = useState(null);
-    console.log(bookItem);
+    //get data from loader
     const categoryItems = useLoaderData();
 
     return (

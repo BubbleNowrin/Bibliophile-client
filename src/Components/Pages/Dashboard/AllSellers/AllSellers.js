@@ -12,6 +12,7 @@ const AllSellers = () => {
 
     const { logOut } = useContext(AuthContext);
 
+    //get all the sellers
     const { data: sellers, refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
@@ -28,6 +29,7 @@ const AllSellers = () => {
         }
     })
 
+    //delete specific seller
     const handleDelete = (id) => {
         fetch(`https://assignment-product-resale-server.vercel.app/sellers/${id}`, {
             method: 'DELETE',
@@ -44,12 +46,13 @@ const AllSellers = () => {
             .then(data => {
                 console.log(data);
                 if (data.deletedCount > 0) {
-                    notifyDelete();
                     refetch();
+                    notifyDelete();
                 }
             })
     };
 
+    //verify a seller
     const handleVerify = (id) => {
         fetch(`https://assignment-product-resale-server.vercel.app/sellers/${id}`, {
             method: 'PUT',
@@ -66,8 +69,8 @@ const AllSellers = () => {
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
-                    notifyVerify();
                     refetch();
+                    notifyVerify();
                 }
             })
     };

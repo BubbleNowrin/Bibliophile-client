@@ -10,6 +10,7 @@ const ReportedItems = () => {
 
     const { logOut } = useContext(AuthContext);
 
+    //get the reported items
     const { data: reportedItems, refetch } = useQuery({
         queryKey: ['reported'],
         queryFn: async () => {
@@ -25,6 +26,8 @@ const ReportedItems = () => {
             return data;
         }
     })
+
+    //delete the reported items
     const handleDelete = (id) => {
         fetch(`https://assignment-product-resale-server.vercel.app/reported/${id}`, {
             method: 'DELETE',
@@ -42,8 +45,8 @@ const ReportedItems = () => {
                 console.log(data);
                 if (data.deletedCount > 0) {
                     //toast
-                    notifyDeleted();
                     refetch();
+                    notifyDeleted();
                 }
             })
     };
