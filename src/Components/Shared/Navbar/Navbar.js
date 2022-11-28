@@ -5,7 +5,7 @@ import logo from '../../../Assets/logo/logo.jpg'
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const notify = () => toast.success('Logged out Successfully')
-const Navbar = () => {
+const Navbar = ({ children }) => {
     const { user, logOut } = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -22,24 +22,7 @@ const Navbar = () => {
         <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
             <div className="relative flex items-center justify-between">
                 {
-                    user && <label htmlFor="dashboard-drawer"
-                        className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50 lg:hidden"
-                    >
-                        <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
-                            <path
-                                fill="currentColor"
-                                d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"
-                            />
-                            <path
-                                fill="currentColor"
-                                d="M23,6H1C0.4,6,0,5.6,0,5s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,6,23,6z"
-                            />
-                            <path
-                                fill="currentColor"
-                                d="M23,20H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,20,23,20z"
-                            />
-                        </svg>
-                    </label>
+                    children
                 }
                 <Link
                     to="/"
