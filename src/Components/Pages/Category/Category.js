@@ -32,27 +32,29 @@ const Category = () => {
                     ></BookingModal>
                 }
             </div>
-            {/* <Link
-                class=" inline-flex mx-auto items-center rounded border border-red-400 bg-red-400 px-8 py-3 text-black hover:bg-transparent hover:text-red-400 focus:outline-none focus:ring active:text-red-500"
-                to="/"
-            >
-                <span class="text-sm font-medium"> Back </span>
-
-                <svg
-                    class="ml-3 h-5 w-5"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+            <div className='text-center mt-20'>
+                <Link
+                    class=" inline-flex items-center rounded border border-red-400 bg-red-400 px-8 py-3 text-black hover:bg-transparent hover:text-red-400 focus:outline-none focus:ring active:text-red-500"
+                    to="/"
                 >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                </svg>
-            </Link> */}
+                    <span class="text-sm font-medium"> Back to Home </span>
+
+                    <svg
+                        class="ml-3 h-5 w-5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                    </svg>
+                </Link>
+            </div>
         </div>
     );
 };
